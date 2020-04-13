@@ -1,8 +1,7 @@
 import { apiKey, clientId } from './config'
 
 var GoogleAuth; // Google Auth object.
-var SCOPES = ['https://www.googleapis.com/auth/calendar.events.readonly', 
-  'https://www.googleapis.com/auth/calendar.readonly'];
+var SCOPES = 'https://www.googleapis.com/auth/calendar.events.readonly https://www.googleapis.com/auth/calendar.readonly';
 var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
 
 export function handleClientLoad(setUser, authenticatedCallback) {
@@ -34,8 +33,8 @@ function initClient(setUser, authenticatedCallback) {
     authenticatedCallback();
     
   }).catch((err) => {
-    console.log(err);
     console.log("Failed to initialize gapi client")
+    console.log(err);
   });
 }
 
