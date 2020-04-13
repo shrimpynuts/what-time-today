@@ -6,7 +6,10 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "moment": "^2.24.0",
+    "node-sass": "^4.13.1",
     "react": "^16.13.1",
+    "react-big-calendar": "^0.24.3",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
