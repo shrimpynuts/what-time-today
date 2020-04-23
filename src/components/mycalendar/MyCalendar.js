@@ -1,10 +1,13 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { Calendar, momentLocalizer } from 'react-big-calendar';
-import { userIsAuthorized } from '../util/auth';
+import { userIsAuthorized } from '../../util/auth';
 import moment from 'moment';
+import SingleCalendar from '../singlecalendar/SingleCalendar';
 import './MyCalendar.scss';
 import './MyCalendar.css';
+import { Paper, List } from '@material-ui/core';
 
+ 
 const localizer = momentLocalizer(moment);
 
 function getRandomColor() {
@@ -36,7 +39,7 @@ function getAndDisplayEvents(addToEvents) {
           
           for(var i = 0; i < calendars.length; i++) {
 
-            var calendar = calendars[i];
+            const calendar = calendars[i];
 
             window.gapi.client.calendar.events.list({
               'calendarId': calendar.id,
@@ -47,12 +50,10 @@ function getAndDisplayEvents(addToEvents) {
               'orderBy': 'startTime'
             }).then(function(response) {
 
-              console.log(response.result);
-
                 var events = response.result.items;
                 var calendarEvents = [];
                 var i;
-                var color = getRandomColor();
+                var color = calendar.backgroundColor;
                 for (i = 0; i < events.length; i++) {
                   var event = events[i];
                   var calendarEvent = {
@@ -86,16 +87,17 @@ function getAndDisplayEvents(addToEvents) {
 // When you select an available slot, create the availability, add it to availabilities
 // Also add the availability to the output for the parent component
 function onSelectAvailableSlot(updateOutput, slotInfo, availabilities, setAvailabilities) {
-    var newAvailability = {
+    const newAvailability = {
         'title': 'Availability',
         'start': slotInfo.start,
         'end': slotInfo.end,
-        'hexColor': "4d9e47",
+        'hexColor': "#464646",
         'visible': true,
         'availability': true,
     };
+    console.log(newAvailability.hexColor)
     // Update availabilities
-    var newAvailabilities = [...availabilities];
+    let newAvailabilities = [...availabilities];
     newAvailabilities.push(newAvailability);
     setAvailabilities(newAvailabilities);
 
@@ -105,12 +107,15 @@ function onSelectAvailableSlot(updateOutput, slotInfo, availabilities, setAvaila
 
 // Gets the style for each event rendered
 function eventStyleGetter(event, start, end, isSelected) {
-  var backgroundColor = '#' + event.hexColor;
-  var style = {
+  // if (event.availability) {
+  //   console.log(event.hexColor);
+  // }
+  const backgroundColor = event.hexColor;
+  const style = {
       backgroundColor: backgroundColor,
       borderRadius: '3px',
-      opacity: 0.8,
-      color: 'black',
+      opacity: 1,
+      color: 'white',
       border: '0px',
       display: 'block'
   };
@@ -145,11 +150,18 @@ const MyCalendar = forwardRef((props, ref) => {
     const maxTime = new Date();
     maxTime.setHours(23,59,59);
 
-    const removeEvents = () => {
+    const signOut = () => {
       setEvents([]);
+      setCalendars([]);
+    }
+
+    const clearAvailability = () => {
+      setAvailabilities([]);
+      props.addToOutput([]);
     }
 
     const addToEvents = (newCalendar, e) => {
+      newCalendar.visible = true;
       setCalendars(oldCalendars => [...oldCalendars, newCalendar])
       setEvents(oldEvents => [...oldEvents, ...e]);
     }
@@ -157,40 +169,49 @@ const MyCalendar = forwardRef((props, ref) => {
     useImperativeHandle(ref, () => {
         return {
             getAndDisplayEvents: () => {getAndDisplayEvents(addToEvents);},
-            removeEvents: removeEvents
+            signOut: signOut,
+            clearAvailability: clearAvailability,
         };
     });
 
     const toggleCalendar = (i) => {
-      console.log(calendars[i].summary);
-      setEvents((oldEvents) => {
-        var newEvents = [...oldEvents];
-        return (newEvents.map((e) => {
-          if (e.summary == calendars[i].summary) {
-            e.visible = !e.visible
-          }
-          return e;}));
-      });
+      var newEvents = [...events];
+      for (var j = 0; j < newEvents.length; j++) {
+        if (newEvents[j].summary === calendars[i].summary) {
+          newEvents[j].visible = !newEvents[j].visible;
+        }
+      }
+      setEvents(newEvents);
+
+      var newCalendars = [...calendars];
+      for (j = 0; j < newCalendars.length; j++) {
+        // console.log(j)
+        if (newCalendars[j].summary === calendars[i].summary) {
+          // console.log(newCalendars[j].summary, newCalendars[j].visible);
+          newCalendars[j].visible = !newCalendars[j].visible;
+          // console.log(newCalendars[j].summary, newCalendars[j].visible);
+        }
+      }
+
+      setCalendars(newCalendars);
     }
 
     return (
-      <div>
+      <div className="MyCalendar">
 
-        <div className="CalendarList">
+        <Paper style={{maxHeight: 400, overflow: 'auto', marginRight: 20}}>
+          <List>
           {calendars.map((calendar, i) => {
-            return (<div key={i} 
-              style={{
-              backgroundColor: calendar.color,
-              padding: '10px',
-              borderRadius: '5px'
-              }} 
-              value={calendar}
-              onClick={(e) => toggleCalendar(i)}
-              >
-              <p>{calendar.summary}</p>
-              </div>);
+            return (<SingleCalendar i={i} toggleCalendar={toggleCalendar} calendar={calendar}/>);
           })}
-        </div>
+          </List>
+        </Paper>
+
+        {/* <div className="CalendarList">
+          {calendars.map((calendar, i) => {
+            return (<SingleCalendar i={i} toggleCalendar={toggleCalendar} calendar={calendar}/>);
+          })}
+        </div> */}
 
         <Calendar
         localizer={localizer}
@@ -198,13 +219,13 @@ const MyCalendar = forwardRef((props, ref) => {
           if (!e) {
             return false;
           }
-          return (e.visible == true);
+          return (e.visible === true);
         })}
         selectable={true}
         onSelectSlot={(info) => onSelectAvailableSlot(props.addToOutput, info, availabilities, setAvailabilities)}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 400 }}
+        style={{ height: 400, flexGrow: 1 }}
         defaultView={'week'}
         views={['week', 'day']}
         onSelectEvent={(event, e) =>onSelectEvent(event, e, availabilities, setAvailabilities, props.addToOutput)}

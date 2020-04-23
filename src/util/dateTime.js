@@ -20,7 +20,7 @@ function formatAMPM(date) {
 export function outputToString(output) {
   // Currently only supporting single day availabilities
 
-  if (output.length === 0) return ["Nothing selected. Click and drag on the calendar to select a chunk of availability."];
+  if (output.length === 0) return ["Nothing selected. Click and drag on the calendar to select availability."];
 
   // Sort by start time
   var sortedOutput = [...output];
@@ -41,8 +41,18 @@ export function outputToString(output) {
     let startTime = formatAMPM(out.start);
     let endTime = formatAMPM(out.end);
     
-    let singleResult = `${day} (${monthNum}/${dayNum}) from ${startTime} to ${endTime} ${shorttz}`;
+    let singleResult = `${day} (${monthNum}/${dayNum}) ${startTime} - ${endTime} ${shorttz}`;
     result.push(singleResult);
   }
+
+  result.unshift("I\'m available these times:");
+  return result;
+}
+
+export function outputToStringCopy(output) {
+  var out = outputToString(output);
+  console.log(out);
+  var result = out.join("\r\n");
+  console.log(result);
   return result;
 }

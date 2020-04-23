@@ -85,7 +85,6 @@ function setSigninStatus(status, setUser) {
     // $('#auth-status').html('You are currently signed in and have granted ' +
     //     'access to this app.');
     setUser(user);
-    console.log(user);
     console.log("Currently signed in and granted access to this app");
   } else {
     // $('#sign-in-or-out-button').html('Sign In/Authorize');

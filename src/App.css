@@ -1,5 +1,34 @@
 .App {
-  padding: 0px 40px 40px 40px;
+  /* padding: 0px 40px 0px 40px; */
   text-align: center;
 }
 
+.Body {
+  padding: 40px 40px 0px 40px;
+}
+
+.peep1 {
+  float: left;
+  height: 400px;
+  /* padding-top: 40px; */
+  padding-left: 40px;
+}
+
+.peep2 {
+  float: right;
+  height: 400px;
+  padding-right: 40px;
+}
+
+.textbox {
+  visibility: hidden;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .peep1 {
+      visibility: hidden;
+  }
+  .peep2 {
+    visibility: hidden;
+  }
+}
