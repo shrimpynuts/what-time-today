@@ -113,9 +113,9 @@ function App() {
                     /* Logical shortcut for only displaying the 
                         button if the copy command exists */
                     document.queryCommandSupported('copy') &&
-                        <button style={{marginBottom: 10}}onClick={copyToClipboard}>Copy</button> 
+                        <button style={{marginBottom: 10}} onClick={copyToClipboard}>Copy</button> 
                       }
-                    <button style={{marginBottom: 10}}onClick={clearAvailability}>Clear</button> 
+                    <button style={{marginBottom: 10, marginLeft: 20}} onClick={clearAvailability}>Clear</button> 
                   </div>
 
               <Card classes={{ root: classes.card }} variant="outlined">
