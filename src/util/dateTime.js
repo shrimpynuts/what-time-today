@@ -51,8 +51,6 @@ export function outputToString(output) {
 
 export function outputToStringCopy(output) {
   var out = outputToString(output);
-  console.log(out);
   var result = out.join("\r\n");
-  console.log(result);
   return result;
 }

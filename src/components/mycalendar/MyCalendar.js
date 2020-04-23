@@ -95,7 +95,6 @@ function onSelectAvailableSlot(updateOutput, slotInfo, availabilities, setAvaila
         'visible': true,
         'availability': true,
     };
-    console.log(newAvailability.hexColor)
     // Update availabilities
     let newAvailabilities = [...availabilities];
     newAvailabilities.push(newAvailability);
@@ -107,9 +106,6 @@ function onSelectAvailableSlot(updateOutput, slotInfo, availabilities, setAvaila
 
 // Gets the style for each event rendered
 function eventStyleGetter(event, start, end, isSelected) {
-  // if (event.availability) {
-  //   console.log(event.hexColor);
-  // }
   let cursor;
   if (event.availability) {
     cursor = 'pointer';
@@ -192,11 +188,8 @@ const MyCalendar = forwardRef((props, ref) => {
 
       var newCalendars = [...calendars];
       for (j = 0; j < newCalendars.length; j++) {
-        // console.log(j)
         if (newCalendars[j].summary === calendars[i].summary) {
-          // console.log(newCalendars[j].summary, newCalendars[j].visible);
           newCalendars[j].visible = !newCalendars[j].visible;
-          // console.log(newCalendars[j].summary, newCalendars[j].visible);
         }
       }
 

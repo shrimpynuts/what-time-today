@@ -99,7 +99,7 @@ function App() {
           <div className="toolbar-buttons">
 
               <h3 className="title">
-              { user ? "Hi, " + user.Pt.pW : "Hi, Guest" }
+              { user ? "Hi, " + user.Pt.pW + "!" : "Hi, Guest!" }
               </h3>
 
             <button style={{
