@@ -110,6 +110,12 @@ function eventStyleGetter(event, start, end, isSelected) {
   // if (event.availability) {
   //   console.log(event.hexColor);
   // }
+  let cursor;
+  if (event.availability) {
+    cursor = 'pointer';
+  } else {
+    cursor = 'auto';
+  }
   const backgroundColor = event.hexColor;
   const style = {
       backgroundColor: backgroundColor,
@@ -117,7 +123,8 @@ function eventStyleGetter(event, start, end, isSelected) {
       opacity: 1,
       color: 'white',
       border: '0px',
-      display: 'block'
+      display: 'block',
+      cursor: cursor
   };
   return {
       style: style
@@ -198,20 +205,16 @@ const MyCalendar = forwardRef((props, ref) => {
 
     return (
       <div className="MyCalendar">
-
-        <Paper style={{maxHeight: 400, overflow: 'auto', marginRight: 20}}>
+        {
+          calendars.length > 0 &&
+          <Paper style={{maxHeight: 400, overflow: 'auto', marginRight: 20, width: "15%"}}>
           <List>
           {calendars.map((calendar, i) => {
             return (<SingleCalendar i={i} toggleCalendar={toggleCalendar} calendar={calendar}/>);
           })}
           </List>
         </Paper>
-
-        {/* <div className="CalendarList">
-          {calendars.map((calendar, i) => {
-            return (<SingleCalendar i={i} toggleCalendar={toggleCalendar} calendar={calendar}/>);
-          })}
-        </div> */}
+        }
 
         <Calendar
         localizer={localizer}
@@ -225,7 +228,7 @@ const MyCalendar = forwardRef((props, ref) => {
         onSelectSlot={(info) => onSelectAvailableSlot(props.addToOutput, info, availabilities, setAvailabilities)}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 400, flexGrow: 1 }}
+        style={{ height: 400, flexGrow: 1, cursor: 'pointer' }}
         defaultView={'week'}
         views={['week', 'day']}
         onSelectEvent={(event, e) =>onSelectEvent(event, e, availabilities, setAvailabilities, props.addToOutput)}

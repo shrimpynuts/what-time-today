@@ -32,3 +32,40 @@
     visibility: hidden;
   }
 }
+
+.toolbar-buttons {
+  /* top: 50%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  float: right
+}
+
+h1.title {
+  display: inline-block;
+  font-family: "DM Serif Display", sans-serif;
+  font-size: 50px;
+  padding: 0px;
+  float: left;
+}
+
+h3.title {
+  display: inline-block;
+  font-family: "DM Serif Display", sans-serif;
+  font-size: 30px;
+  padding: 0px;
+  margin-bottom: 0px;
+}
+
+.footer {
+  background-color: black;
+  padding-bottom: 200px;
+}
+
+.below-calendar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* padding-bottom: -20px; */
+  padding-top: 60px;
+}

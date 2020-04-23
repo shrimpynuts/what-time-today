@@ -6,7 +6,7 @@ import './App.css';
 import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar } from '@material-ui/core';
+import { AppBar, List } from '@material-ui/core';
 
 
 const useStyles = makeStyles({
@@ -83,13 +83,33 @@ function App() {
   
   return (
     <div className="App">
-      <AppBar position="static" style={{background: 'white', color: "black"}}> 
-        <Toolbar>
-          Meet { user ? user.Pt.pW : "Me" }
-            <button style={{margin: 10, float: "left"}}onClick={handleSignClick}>
+      <AppBar position="static" style={{
+        background: 'white',
+        color: "black"}}> 
+        <div style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            paddingLeft: 30,
+            paddingRight: 30,
+        }}>
+          <h1 className="title">
+          What time today? 
+          </h1>
+          <div className="toolbar-buttons">
+
+              <h3 className="title">
+              { user ? "Hi, " + user.Pt.pW : "Hi, Guest" }
+              </h3>
+
+            <button style={{
+              margin: 10, 
+              float: "left"}}
+              onClick={handleSignClick}>
               {user ? "Google Sign Out" : "Google Sign In" }
             </button>
-          </Toolbar>
+          </div>
+          </div>
         </AppBar>
 
         <div className="Body">
@@ -99,19 +119,11 @@ function App() {
           </div>
         <div>
           
-        <div style={{
-          paddingBottom: -20,
-          paddingTop: 20, display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between"
-         }}>
+        <div className="below-calendar">
             <img className="peep1" src={peep1} />
-              
                 <div id="lol">   
                   <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
                     {
-                    /* Logical shortcut for only displaying the 
-                        button if the copy command exists */
                     document.queryCommandSupported('copy') &&
                         <button style={{marginBottom: 10}} onClick={copyToClipboard}>Copy</button> 
                       }
@@ -119,13 +131,13 @@ function App() {
                   </div>
 
               <Card classes={{ root: classes.card }} variant="outlined">
-                <CardContent>
-                  
-                {outputToString(output).map((out, i) => {
-                  return <p key={i} style={{textAlign: "left", fontSize: 13}}>{out}</p>
-                })}
-
-                </CardContent>
+                <List style={{maxHeight: 200, overflow: 'auto'}}>
+                    <CardContent>
+                    {outputToString(output).map((out, i) => {
+                      return <p key={i} style={{textAlign: "left", fontSize: 13}}>{out}</p>
+                    })}
+                    </CardContent>
+                </List>
               </Card>
               </div>
 
@@ -134,9 +146,11 @@ function App() {
               <img className="peep2" src={peep2}/>
           </div>
         </div>
+
         
 
         </div>
+        <div className="footer"/>
     </div>
   );
 }
