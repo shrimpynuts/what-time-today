@@ -8,6 +8,7 @@ import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, List } from '@material-ui/core';
 
+// PORT=$PORT react-scripts start
 
 const useStyles = makeStyles({
   card: {
@@ -82,6 +83,7 @@ function App() {
   };
   
   return (
+    <div className="App-border">
     <div className="App">
       <AppBar position="static" style={{
         background: 'white',
@@ -152,6 +154,8 @@ function App() {
         </div>
         <div className="footer"/>
     </div>
+    </div>
+
   );
 }
 
