@@ -20,7 +20,8 @@ import { getAndDisplayEvents } from './util/gapi';
 import './style/App.css';
 
 var peep1 = require('./assets/peep1.png');
-var peep2 = require('./assets/peep2.png');
+var rand = Math.floor(Math.random() * 16) + 2; 
+var peep2 = require('./assets/peep' + rand.toString() + '.png');
 
 // PORT=$PORT react-scripts start
 // serve -s build
