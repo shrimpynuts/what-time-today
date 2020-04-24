@@ -51,7 +51,7 @@ h1.title {
   font-family: "DM Serif Display", sans-serif;
   font-size: 50px;
   padding: 0px;
-  float: left;
+  color: black;
 }
 
 h3.title {
@@ -63,8 +63,10 @@ h3.title {
 }
 
 .footer {
+  color: white;
   background-color: black;
-  padding-bottom: 200px;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .below-calendar {
@@ -73,4 +75,17 @@ h3.title {
   justify-content: space-between;
   /* padding-bottom: -20px; */
   padding-top: 60px;
+}
+
+.privacy-link {
+  color: white;
+  /* float: right; */
+  padding-right: 40px;
+}
+
+.otherbody {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 70vh;
 }
