@@ -34,7 +34,7 @@ export default function Header(props) {
         <div className="phone-screen">
           <div className="otherbody">
               <p className="title">
-                Coming to mobile soon 😘
+                Working on mobile 😰
               </p>
           </div>
         </div>
