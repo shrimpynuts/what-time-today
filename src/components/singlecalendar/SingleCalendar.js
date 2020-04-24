@@ -1,8 +1,12 @@
 import React from "react";
 import Checkbox from '@material-ui/core/Checkbox';
+import { useDispatch } from "react-redux";
+import { toggleCalendar } from '../../redux/actions';
 
 export default function SingleCalendar (props) {
-    // console.log(props.calendar.summary, props.calendar.visible)
+
+    const dispatch = useDispatch();
+
     const style={
         borderRadius: '5px',
         textAlign: 'left',
@@ -13,9 +17,9 @@ export default function SingleCalendar (props) {
         <div key={props.i}
             style={style} 
               value={props.calendar}
-              onClick={(e) => props.toggleCalendar(props.i)}>
+              onClick={(e) => dispatch(toggleCalendar(props.calendar))}>
 
-            <Checkbox checked={props.calendar.visible} style={{color: props.calendar.color}}/>
+            <Checkbox key={props.i} checked={props.calendar.visible} style={{color: props.calendar.color}}/>
             {props.calendar.summary}
         </div>      
     )

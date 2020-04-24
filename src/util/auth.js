@@ -1,4 +1,7 @@
 import { apiKey, clientId } from './config'
+import { useDispatch } from "react-redux";
+import { signIn } from '../redux/actions';
+
 
 var GoogleAuth; // Google Auth object.
 var SCOPES = 'https://www.googleapis.com/auth/calendar.events.readonly https://www.googleapis.com/auth/calendar.readonly';
@@ -78,12 +81,17 @@ export function revokeAccess() {
 
 function setSigninStatus(status, setUser) {
   var user = GoogleAuth.currentUser.get();
+  console.log(user);
   var isAuthorized = user.hasGrantedScopes(SCOPES);
   if (isAuthorized) {
     // $('#sign-in-or-out-button').html('Sign out');
     // $('#revoke-access-button').css('display', 'inline-block');
     // $('#auth-status').html('You are currently signed in and have granted ' +
     //     'access to this app.');
+
+    // let niceUser = {
+    //   user.pw
+    // }
     setUser(user);
     console.log("Currently signed in and granted access to this app");
   } else {

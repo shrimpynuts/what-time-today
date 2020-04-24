@@ -1,6 +1,0 @@
-.CalendarList {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    padding-bottom: 20px;
-}

@@ -1,0 +1,45 @@
+.titlediv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  h1.title {
+    display: inline-block;
+    font-family: "DM Serif Display", sans-serif;
+    font-size: 50px;
+    padding: 0px;
+    color: black;
+  }
+  
+  .sign-button {
+    margin: 10px;
+    float: left
+  }
+
+  h3.title {
+    display: inline-block;
+    font-family: "DM Serif Display", sans-serif;
+    font-size: 30px;
+    padding: 0px;
+    margin-bottom: 0px;
+  }
+  
+  @media only screen and (max-device-width: 480px) {
+    h3.title {
+      display: none;
+    }
+    .sign-button {
+      display: none;
+    }
+    .toolbar-buttons {
+      display: none;
+    }
+    .titlediv {
+      flex-direction: column;
+      height: 94vh;
+    }
+  } 
+  

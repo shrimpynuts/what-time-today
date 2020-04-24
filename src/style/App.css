@@ -21,6 +21,8 @@
 
 .peep2 {
   float: right;
+  /* width: 100%;
+  height: auto; */
   height: 400px;
   padding-right: 40px;
 }
@@ -29,12 +31,29 @@
   visibility: hidden;
 }
 
+.phone-screen {
+  display: none;
+}
+
 @media only screen and (max-device-width: 480px) {
+  .Body {
+    display: none;
+  }
   .peep1 {
-      visibility: hidden;
+    display: none;
   }
   .peep2 {
-    visibility: hidden;
+    display: none;
+  }
+  .phone-screen {
+    display: block;
+  }
+  body .otherbody {
+    height: 60vh;
+  }
+
+  .footer {
+    display: none;
   }
 }
 
@@ -46,28 +65,6 @@
   float: right
 }
 
-h1.title {
-  display: inline-block;
-  font-family: "DM Serif Display", sans-serif;
-  font-size: 50px;
-  padding: 0px;
-  color: black;
-}
-
-h3.title {
-  display: inline-block;
-  font-family: "DM Serif Display", sans-serif;
-  font-size: 30px;
-  padding: 0px;
-  margin-bottom: 0px;
-}
-
-.footer {
-  color: white;
-  background-color: black;
-  padding-top: 25px;
-  padding-bottom: 25px;
-}
 
 .below-calendar {
   display: flex;
@@ -89,3 +86,13 @@ h3.title {
   justify-content: space-around;
   height: 70vh;
 }
+
+.copytext {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+/* 
+.not-homepage {
+  padding: 40px;
+}  */
