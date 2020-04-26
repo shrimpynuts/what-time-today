@@ -8,9 +8,10 @@
 
   h1.title {
     display: inline-block;
-    font-family: "DM Serif Display", sans-serif;
+    font-family: 'Playfair Display', serif;
     font-size: 50px;
     padding: 0px;
+    font-weight: 10000;
     color: black;
   }
   
@@ -23,10 +24,11 @@
 
   h3.title {
     display: inline-block;
-    font-family: "DM Serif Display", sans-serif;
+    font-family: 'Playfair Display', serif;
     font-size: 30px;
     padding: 0px;
     margin-bottom: 0px;
+    
   }
 
   p {
