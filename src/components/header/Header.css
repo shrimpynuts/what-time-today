@@ -32,8 +32,12 @@
   }
 
   @media only screen and (max-device-width: 480px) {
+    h1.title {
+      margin-bottom: 5px;
+    }
     h3.title {
-      margin: 0px;
+    font-size: 25px;
+    margin: 0px;
     }
     .titlediv {
       flex-direction: column;
