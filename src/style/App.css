@@ -25,13 +25,13 @@
   float: left;
   height: 320px;
   /* padding-top: 40px; */
-  padding-left: 150px;
+  padding-left: 100px;
 }
 
 .peep2 {
   float: right;
   height: 320px;
-  padding-right: 150px;
+  padding-right: 100px;
 }
 
 .textbox {
@@ -81,6 +81,11 @@
 
 .output-card {
   margin-bottom: 20px;
+  /* margin-left: 20px; */
+}
+
+#lol {
+  margin: 0 auto;
 }
 
 @media only screen and (max-device-width: 850px) {
