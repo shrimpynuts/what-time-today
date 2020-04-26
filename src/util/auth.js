@@ -1,6 +1,6 @@
 import { apiKey, clientId } from './config'
-import { useDispatch } from "react-redux";
-import { signIn } from '../redux/actions';
+// import { useDispatch } from "react-redux";
+// import { signIn } from '../redux/actions';
 
 
 var GoogleAuth; // Google Auth object.
@@ -18,7 +18,7 @@ function initClient(setUser, authenticatedCallback) {
   // Retrieve the discovery document for version 3 of Google Drive API.
   // In practice, your app can retrieve one or more discovery documents.
 
-  console.log("About to try to initialize gapi client");
+  // console.log("About to try to initialize gapi client");
 
   window.gapi.client.init({
       'apiKey': apiKey,
@@ -26,7 +26,7 @@ function initClient(setUser, authenticatedCallback) {
       'scope': SCOPES,
       'discoveryDocs': DISCOVERY_DOCS
   }).then(function () {
-    console.log("Successfully initialized gapi client");
+    // console.log("Successfully initialized gapi client");
     GoogleAuth = window.gapi.auth2.getAuthInstance();
     // Listen for sign-in state changes.
     GoogleAuth.isSignedIn.listen((status) => updateSigninStatus(status, setUser));
@@ -36,8 +36,8 @@ function initClient(setUser, authenticatedCallback) {
     authenticatedCallback();
     
   }).catch((err) => {
-    console.log("Failed to initialize gapi client")
-    console.log(err);
+    // console.log("Failed to initialize gapi client")
+    // console.log(err);
   });
 }
 
@@ -47,7 +47,7 @@ function updateSigninStatus(status, setUser) {
    * variable is set, then the user was prompted to authorize the application
    * before the request executed. In that case, proceed with that API request.
    */
-  console.log("Update sign in status");
+  // console.log("Update sign in status");
   setSigninStatus(status, setUser);
 }
 
@@ -55,12 +55,12 @@ function updateSigninStatus(status, setUser) {
 export function handleAuthClick() {
   if (GoogleAuth.isSignedIn.get()) {
     // User is authorized and has clicked "Sign out" button.
-    console.log("Signing out!");
+    // console.log("Signing out!");
     GoogleAuth.signOut();
     return true;
   } else {
     // User is not signed in. Start Google auth flow.
-    console.log("Signing in!");
+    // console.log("Signing in!");
     GoogleAuth.signIn();
     return false;
   }
@@ -68,7 +68,7 @@ export function handleAuthClick() {
 
 export function userIsAuthorized() {
     if (GoogleAuth === undefined) {
-        console.log("Google Auth not initialized yet");
+        // console.log("Google Auth not initialized yet");
         return false;
     } else {
         return GoogleAuth.isSignedIn.get();
@@ -81,7 +81,6 @@ export function revokeAccess() {
 
 function setSigninStatus(status, setUser) {
   var user = GoogleAuth.currentUser.get();
-  console.log(user);
   var isAuthorized = user.hasGrantedScopes(SCOPES);
   if (isAuthorized) {
     // $('#sign-in-or-out-button').html('Sign out');
@@ -93,13 +92,13 @@ function setSigninStatus(status, setUser) {
     //   user.pw
     // }
     setUser(user);
-    console.log("Currently signed in and granted access to this app");
+    // console.log("Currently signed in and granted access to this app");
   } else {
     // $('#sign-in-or-out-button').html('Sign In/Authorize');
     // $('#revoke-access-button').css('display', 'none');
     // $('#auth-status').html('You have not authorized this app or you are ' +
     //     'signed out.');
     setUser(null);
-    console.log("Have not authorized this app or signed out");
+    // console.log("Have not authorized this app or signed out");
   }
 }

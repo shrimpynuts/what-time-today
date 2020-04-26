@@ -2,29 +2,36 @@
   /* padding: 0px 40px 0px 40px; */
   text-align: center;
   background-color: white;
+  height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 .App-border {
+  flex: 1;
   background-color: black;
-  padding: 20px;
+  padding: 20px 20px 0px 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .Body {
-  padding: 40px 40px 0px 40px;
+  flex: 1;
+  padding: 30px 30px 0px 30px;
 }
 
 .peep1 {
   float: left;
-  height: 400px;
+  height: 320px;
   /* padding-top: 40px; */
-  padding-left: 40px;
+  padding-left: 150px;
 }
 
 .peep2 {
   float: right;
-  /* width: 100%;
-  height: auto; */
-  height: 400px;
-  padding-right: 40px;
+  height: 320px;
+  padding-right: 150px;
 }
 
 .textbox {
@@ -33,28 +40,6 @@
 
 .phone-screen {
   display: none;
-}
-
-@media only screen and (max-device-width: 480px) {
-  .Body {
-    display: none;
-  }
-  .peep1 {
-    display: none;
-  }
-  .peep2 {
-    display: none;
-  }
-  .phone-screen {
-    display: block;
-  }
-  body .otherbody {
-    height: 60vh;
-  }
-
-  .footer {
-    display: none;
-  }
 }
 
 .toolbar-buttons {
@@ -71,7 +56,7 @@
   flex-direction: row;
   justify-content: space-between;
   /* padding-bottom: -20px; */
-  padding-top: 60px;
+  padding-top: 20px;
 }
 
 .privacy-link {
@@ -80,19 +65,53 @@
   padding-right: 40px;
 }
 
-.otherbody {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 80vh;
-}
-
 .copytext {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-/* 
 .not-homepage {
-  padding: 40px;
-}  */
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* height: 70vh; */
+}  
+
+.output-card {
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-device-width: 850px) {
+  /* .not-homepage {
+    height: 50vh;
+  } */
+  .App-border {
+    height: auto;
+  }
+
+  .aboutpage {
+    height: 50vh;
+  }
+
+  .Body {
+    padding: 20px 20px 0px 20px;
+  }
+  
+  .peep1 {
+    padding: 0px;
+  }
+  .peep2 {
+    padding: 0px;
+  }
+}
+
+@media only screen and (max-device-width: 480px) {
+  .peep1 {
+    display: none;
+  }
+  .peep2 {
+    display: none;
+  }
+}

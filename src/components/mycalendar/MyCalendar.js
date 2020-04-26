@@ -24,11 +24,16 @@ export default function MyCalendar() {
   maxTime.setHours(23,59,59);
 
 
+  var width = window.innerWidth;
+  const availableCalendarViews = (width > 600) ?  ['week', 'day'] : ['day'];
+  const defaultCalendarView = (width > 600) ?  'week' : 'day';
+
   return (
     <div className="MyCalendar">
       {
+
         calendars.length > 0 &&
-        <Paper style={{maxHeight: 400, overflow: 'auto', marginRight: 20, width: "15%"}}>
+        <Paper className="calendar-paper" style={{maxHeight: 400, overflow: 'auto', marginRight: 20, width: "15%"}}>
           <List>
             {calendars.map((calendar, i) => {
               return (<SingleCalendar i={i} calendar={calendar}/>);
@@ -38,6 +43,7 @@ export default function MyCalendar() {
       }
 
       <Calendar
+      className="big-calendar"
       localizer={localizer}
       events={(events.concat(availabilities)).filter((e) => {
         if (!e) {
@@ -55,8 +61,8 @@ export default function MyCalendar() {
       startAccessor="start"
       endAccessor="end"
       style={{ height: 400, flexGrow: 1, cursor: 'pointer' }}
-      defaultView={'week'}
-      views={['week', 'day']}
+      defaultView={defaultCalendarView}
+      views={availableCalendarViews}
       onSelectEvent={(event, e) =>onSelectEvent(event, dispatch)}
       eventPropGetter={(eventStyleGetter)}
       // scrollToTime={props.initDate}

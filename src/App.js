@@ -23,8 +23,6 @@ var peep1 = require('./assets/peep1.png');
 var rand = Math.floor(Math.random() * 16) + 2; 
 var peep2 = require('./assets/peep' + rand.toString() + '.png');
 
-// PORT=$PORT react-scripts start
-// serve -s build
 
 function App() {
   const dispatch = useDispatch();
@@ -64,7 +62,7 @@ function App() {
   }
 
   const authenticatedCallback = () => {
-    console.log("Already authenticated, requesting calendar now");
+    // console.log("Already authenticated, requesting calendar now");
     // ref.current.getAndDisplayEvents();
   }
 
@@ -73,9 +71,11 @@ function App() {
     if (handleAuthClick()) {
       signOutOfApp();
     } else {
-      console.log("Successfully authenticated after clicking sign in, requesting calendar now");
+      // console.log("Successfully authenticated after clicking sign in, requesting calendar now");
     }
   }
+
+  var width = window.innerWidth;
 
   const home = (      
     <div className="Body">
@@ -93,8 +93,8 @@ function App() {
               <button style={{marginBottom: 10, marginLeft: 20}} onClick={() => {dispatch(clearAvailabilities());}}>Clear</button> 
             </div>
 
-        <Card classes={{ root: classes.card }} variant="outlined">
-          <List style={{maxHeight: 300, overflow: 'auto'}}>
+        <Card className="output-card" classes={{ root: classes.card }} variant="outlined">
+          <List style={{maxHeight: 240, overflow: 'auto'}}>
               <CardContent>
               {outputToString(availabilities).map((out, i) => {
                 return <p key={i} style={{textAlign: "left", fontSize: 13}}>{out}</p>
@@ -103,27 +103,32 @@ function App() {
           </List>
         </Card>
         </div>
-        <img className="peep2" src={peep2}/>
+        {
+          // width 
+          <img className="peep2" src={peep2}/>
+
+        }
       </div>
       </div>
     </div>);
+
       
   return (
-    <Router>
-        <div className="App-border">
-        <div className="App">
+    <div className="App">
+    {/* <div className="App-border"> */}
+        <Router>
           <Header handleSignClick={handleSignClick}/>
               <Switch>
                 <Route path="/privacy">
-                  <div className="otherbody">
+                  {/* <div className="otherbody"> */}
                     <Privacy/>
-                  </div>
+                  {/* </div> */}
                 </Route>
 
                 <Route path="/about">
-                  <div className="otherbody">
+                  {/* <div className="otherbody"> */}
                     <About/>
-                  </div>
+                  {/* </div> */}
                 </Route>
 
                 <Route path="/">
@@ -131,9 +136,9 @@ function App() {
                 </Route>
               </Switch>
           <Footer/>
-    </div>
-    </div>
     </Router>
+    {/* </div> */}
+  </div>
   );
 }
 

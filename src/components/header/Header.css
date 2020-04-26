@@ -26,20 +26,17 @@
     padding: 0px;
     margin-bottom: 0px;
   }
-  
+
+  p {
+    margin: 10px;
+  }
+
   @media only screen and (max-device-width: 480px) {
     h3.title {
-      display: none;
-    }
-    .sign-button {
-      display: none;
-    }
-    .toolbar-buttons {
-      display: none;
+      margin: 0px;
     }
     .titlediv {
       flex-direction: column;
-      height: 94vh;
     }
   } 
   

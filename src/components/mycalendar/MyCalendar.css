@@ -10,3 +10,16 @@
     flex-direction: row;
     justify-content: stretch;
 }
+
+
+@media only screen and (max-device-width: 480px) {
+    .calendar-paper {
+        display: none;
+    }
+    .big-calendar {
+        width: 200px;
+    }
+    .rbc-toolbar .rbc-toolbar-label {
+        padding-top: 10px;
+    }
+}
