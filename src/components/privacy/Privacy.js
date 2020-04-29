@@ -12,7 +12,7 @@ export default function Privacy() {
             <p>The availabities that you select on the calendar only persist for your session and is not stored anywhere.</p>
             <p><b>None of your data will persist.</b></p>
             <p><b>Your data will never be shared publicly or with any third party.</b></p>
-            <p>This project is <a style={{color: 'black'}} target="_blank" href="https://github.com/jonathancai11/what-time-today">open source</a>.</p>
+            <p>This project is <a style={{color: 'black'}} rel="noopener noreferrer" target="_blank" href="https://github.com/jonathancai11/what-time-today">open source</a>.</p>
             <p>If you have any questions or concerns, feel free to email caimjonathan@gmail.com.</p>
         </div>
 

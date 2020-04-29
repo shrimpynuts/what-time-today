@@ -35,7 +35,7 @@ export function eventStyleGetter(event, start, end, isSelected) {
     const backgroundColor = event.hexColor;
     const style = {
         backgroundColor: backgroundColor,
-        borderRadius: '3px',
+        borderRadius: '5px',
         opacity: 1,
         color: 'white',
         border: '0px',

@@ -3,6 +3,7 @@ import { AppBar } from '@material-ui/core';
 import './Header.css'
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
 
 export default function Header(props) {
 
@@ -25,19 +26,22 @@ export default function Header(props) {
                 { user ? "Hi, " + user.firstName + "!" : "Hi, Guest!" }
                 </h3>
 
-                <button className="sign-button" onClick={props.handleSignClick}>
-                {user ? "Google Sign Out" : "Google Sign In" }
-                </button>
+                <OverlayTrigger
+                  placement={"bottom"}
+                    overlay={
+                      <Tooltip 
+                      className="overlay"
+                      style={{zIndex: 3}}>
+                        {user ? "Removes and revokes access to Google Calendar data." : "Imports Google Calendar events to calendar." }
+                        
+                      </Tooltip>
+                    }
+                  >
+                  <Button variant="Light" className="sign-button" onClick={props.handleSignClick}>
+                      {user ? "Google Sign Out" : "Google Sign In" }
+                  </Button>
+                </OverlayTrigger>
             </div> 
-
-
-        <div className="phone-screen">
-          <div className="otherbody">
-              <p className="title">
-                Working on mobile 😰
-              </p>
-          </div>
-        </div>
       </div>
     </AppBar>
     );

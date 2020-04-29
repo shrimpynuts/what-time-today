@@ -38,9 +38,6 @@
   visibility: hidden;
 }
 
-.phone-screen {
-  display: none;
-}
 
 .toolbar-buttons {
   /* top: 50%; */
@@ -48,6 +45,22 @@
   flex-direction: column;
   justify-content: center;
   float: right
+}
+
+.sign-button.btn.btn-Light {
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.btn.btn-Light {
+  border: 1px solid rgb(207, 207, 207);
+  font-size: 14px;
+  text-align: center;
+  padding: 4px 15px 4px 15px;
+  text-align: left;
+  margin: 5px;
+  margin-bottom: 10px;
 }
 
 
@@ -86,6 +99,41 @@
 
 #lol {
   margin: 0 auto;
+}
+
+.dropdown-item {
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  padding: .25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  font-size: small;
+}
+
+.dropdown-item:hover {  
+  background-color: #ececec;
+}
+
+.dropdown-menu.show {
+  z-index: 2;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .25rem;
+  padding: .5rem 0;
+  text-align: left;
+  background-color: white;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  right: auto;
+  bottom: auto;
+  transform: translate3d(0px, 40px, 0px);
 }
 
 @media only screen and (max-device-width: 850px) {

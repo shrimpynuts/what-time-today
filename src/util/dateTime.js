@@ -4,6 +4,8 @@
 const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", 
   "Thursday", "Friday", "Saturday"];
 
+const moment = require('moment-timezone');
+
 function formatAMPM(date) {
   // https://stackoverflow.com/questions/8888491/how-do-you-display-javascript-datetime-in-12-hour-am-pm-format
   var hours = date.getHours();
@@ -17,7 +19,7 @@ function formatAMPM(date) {
 }
 
 
-export function outputToString(output) {
+export function outputToString(output, timeZone) {
   // Currently only supporting single day availabilities
 
   if (output.length === 0) return ["Nothing selected. Click and drag on the calendar to select availability."];
@@ -30,16 +32,19 @@ export function outputToString(output) {
   var result = [];
   for (let i = 0; i < output.length; i++) {
     let out = sortedOutput[i];
+
+    let start = new Date(out.start.toLocaleString("en-US", {timeZone: timeZone}));
+    let end = new Date(out.end.toLocaleString("en-US", {timeZone: timeZone}));
     // var longtz = out.start.toTimeString().match(/\((.+)\)/)[1];
-    var shorttz = out.start.toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2];
+    var shorttz = moment().tz(timeZone).zoneAbbr();
     
     // let month = monthNames[out.start.getMonth()];
-    let day = dayNames[out.start.getDay()];
-    let monthNum = out.start.getMonth();
-    let dayNum = out.start.getDate();
+    let day = dayNames[start.getDay()];
+    let monthNum = start.getMonth();
+    let dayNum = start.getDate();
 
-    let startTime = formatAMPM(out.start);
-    let endTime = formatAMPM(out.end);
+    let startTime = formatAMPM(start);
+    let endTime = formatAMPM(end);
     
     let singleResult = `${day} (${monthNum}/${dayNum}) ${startTime} - ${endTime} ${shorttz}`;
     result.push(singleResult);

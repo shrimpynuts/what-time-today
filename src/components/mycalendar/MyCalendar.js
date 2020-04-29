@@ -28,15 +28,17 @@ export default function MyCalendar() {
   const availableCalendarViews = (width > 600) ?  ['week', 'day'] : ['day'];
   const defaultCalendarView = (width > 600) ?  'week' : 'day';
 
+  var height = 500;
+
   return (
     <div className="MyCalendar">
       {
 
         calendars.length > 0 &&
-        <Paper className="calendar-paper" style={{maxHeight: 400, overflow: 'auto', marginRight: 20, width: "15%"}}>
+        <Paper className="calendar-paper" style={{maxHeight: height, overflow: 'auto', marginRight: 20, width: "15%"}}>
           <List>
             {calendars.map((calendar, i) => {
-              return (<SingleCalendar i={i} calendar={calendar}/>);
+              return (<SingleCalendar key={i} i={i} calendar={calendar}/>);
             })}
           </List>
         </Paper>
@@ -60,14 +62,14 @@ export default function MyCalendar() {
       onSelectSlot={(info) => onSelectAvailableSlot(dispatch, info)}
       startAccessor="start"
       endAccessor="end"
-      style={{ height: 400, flexGrow: 1, cursor: 'pointer' }}
+      style={{ height: height, flexGrow: 1, cursor: 'pointer' }}
       defaultView={defaultCalendarView}
       views={availableCalendarViews}
       onSelectEvent={(event, e) =>onSelectEvent(event, dispatch)}
       eventPropGetter={(eventStyleGetter)}
       // scrollToTime={props.initDate}
       min={minTime}
-      max={maxTime}
+      // max={maxTime}
       />
     </div>
   )

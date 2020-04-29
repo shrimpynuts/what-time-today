@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import MyCalendar from './components/mycalendar/MyCalendar.js';
 import { handleClientLoad, handleAuthClick } from './util/auth';
 import { outputToString } from './util/dateTime';
@@ -17,14 +17,24 @@ import { useDispatch } from "react-redux";
 import { getAvailabilities } from './redux/selectors';
 import { signIn, signOut, clearAllEvents, clearCalendars, clearAvailabilities } from './redux/actions';
 import { getAndDisplayEvents } from './util/gapi';
+import { DropdownButton, Dropdown, OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
+// import {OverlayTrigger, Tooltip} from 'react-bootstrap'.
 import './style/App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const moment = require('moment-timezone');
 
 var peep1 = require('./assets/peep1.png');
 var rand = Math.floor(Math.random() * 16) + 2; 
 var peep2 = require('./assets/peep' + rand.toString() + '.png');
 
 
+var offset = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
 function App() {
+
+  const [timeZone, setTimeZone] = useState(offset);
+
   const dispatch = useDispatch();
   const { availabilities } = useSelector(getAvailabilities);
 
@@ -77,6 +87,8 @@ function App() {
 
   var width = window.innerWidth;
 
+  const timeZones = ["America/Los_Angeles", "America/Chicago", "America/New_York"];
+
   const home = (      
     <div className="Body">
       <div className="Calendar">
@@ -89,14 +101,51 @@ function App() {
 
             <div className="copytext">
               {document.queryCommandSupported('copy') &&
-              <button style={{marginBottom: 10}} onClick={(e) => {copyToClipboard(e, 'lol', availabilities)}}>Copy</button>}
-              <button style={{marginBottom: 10, marginLeft: 20}} onClick={() => {dispatch(clearAvailabilities());}}>Clear</button> 
+                <OverlayTrigger
+                placement={"top"}
+                overlay={
+                  <Tooltip>
+                    Copies the text below to your clipboard.
+                  </Tooltip>
+                }
+              >
+                <Button variant="Light"  onClick={(e) => {copyToClipboard(e, 'lol', availabilities, timeZone)}}>Copy</Button>
+              </OverlayTrigger>
+              }
+
+              <OverlayTrigger
+                placement={"top"}
+                overlay={
+                  <Tooltip>
+                    Deletes all availabilities on the calendar.
+                  </Tooltip>
+                }
+              >
+                <Button variant="Light" onClick={() => {dispatch(clearAvailabilities());}}>Clear</Button> 
+              </OverlayTrigger>
+
+              <OverlayTrigger
+                placement={"top"}
+                overlay={
+                  <Tooltip>
+                    Changes the time zone that your availabilities are translated to.
+                  </Tooltip>
+                }
+              >
+                  <DropdownButton 
+                  variant="Light"
+                  id="dropdown-basic-button" title={moment().tz(timeZone).zoneAbbr()}>
+                    {timeZones.map( (timeZone) =>
+                      <Dropdown.Item as="a" onClick={() => {setTimeZone(timeZone)}}>{moment().tz(timeZone).zoneAbbr()}</Dropdown.Item>
+                    )}
+                  </DropdownButton>
+              </OverlayTrigger>
             </div>
 
         <Card className="output-card" classes={{ root: classes.card }} variant="outlined">
           <List style={{maxHeight: 240, overflow: 'auto'}}>
               <CardContent>
-              {outputToString(availabilities).map((out, i) => {
+              {outputToString(availabilities, timeZone).map((out, i) => {
                 return <p key={i} style={{textAlign: "left", fontSize: 13}}>{out}</p>
               })}
               </CardContent>
