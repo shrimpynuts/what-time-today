@@ -30,10 +30,18 @@ var peep2 = require('./assets/peep' + rand.toString() + '.png');
 
 
 var offset = Intl.DateTimeFormat().resolvedOptions().timeZone;
+var USTimeZones = ["America/Los_Angeles", "America/Chicago", "America/New_York"];
+var AllTimeZones = [...USTimeZones.filter(tz => tz !== offset), offset];
 
 function App() {
 
   const [timeZone, setTimeZone] = useState(offset);
+  const [timeZones, setTimeZones] = useState(AllTimeZones.filter((tz) => tz !== offset));
+
+  useEffect(() => {
+    setTimeZones(AllTimeZones.filter((tz) => tz !== timeZone));
+  }, [timeZone]);
+
 
   const dispatch = useDispatch();
   const { availabilities } = useSelector(getAvailabilities);
@@ -87,7 +95,6 @@ function App() {
 
   var width = window.innerWidth;
 
-  const timeZones = ["America/Los_Angeles", "America/Chicago", "America/New_York"];
 
   const home = (      
     <div className="Body">
@@ -109,7 +116,7 @@ function App() {
                   </Tooltip>
                 }
               >
-                <Button variant="Light"  onClick={(e) => {copyToClipboard(e, 'lol', availabilities, timeZone)}}>Copy</Button>
+                <Button variant="Light" onClick={(e) => {copyToClipboard(e, 'lol', availabilities, timeZone)}}>Copy</Button>
               </OverlayTrigger>
               }
 
@@ -134,8 +141,9 @@ function App() {
               >
                   <DropdownButton 
                   variant="Light"
+                  drop={"down"}
                   id="dropdown-basic-button" title={moment().tz(timeZone).zoneAbbr()}>
-                    {timeZones.map( (timeZone) =>
+                    {timeZones.map((timeZone) =>
                       <Dropdown.Item as="a" onClick={() => {setTimeZone(timeZone)}}>{moment().tz(timeZone).zoneAbbr()}</Dropdown.Item>
                     )}
                   </DropdownButton>
