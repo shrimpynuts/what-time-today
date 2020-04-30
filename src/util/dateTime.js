@@ -44,7 +44,7 @@ export function outputToString(output, timeZone) {
     
     // let month = monthNames[out.start.getMonth()];
     let day = dayNames[start.getDay()];
-    let monthNum = start.getMonth();
+    let monthNum = start.getMonth() + 1;
     let dayNum = start.getDate();
 
     let startTime = formatAMPM(start);
