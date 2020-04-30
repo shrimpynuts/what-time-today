@@ -148,6 +148,7 @@
     height: 50vh;
   } */
   .dropdown-item {
+    margin: 0 auto;
     width: 60px;
   }
   .dropdown-menu.show {
