@@ -22,6 +22,10 @@ function formatAMPM(date) {
 export function outputToString(output, timeZone) {
   // Currently only supporting single day availabilities
 
+  if (!timeZone) {
+    return ["Copy not working!! Notify me in the feedback form please!"];
+  }
+
   if (output.length === 0) return ["Nothing selected. Click and drag on the calendar to select availability."];
 
   // Sort by start time
@@ -54,8 +58,8 @@ export function outputToString(output, timeZone) {
   return result;
 }
 
-export function outputToStringCopy(output) {
-  var out = outputToString(output);
+export function outputToStringCopy(output, timeZone) {
+  var out = outputToString(output, timeZone);
   var result = out.join("\r\n");
   return result;
 }

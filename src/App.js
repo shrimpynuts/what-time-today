@@ -116,7 +116,8 @@ function App() {
                   </Tooltip>
                 }
               >
-                <Button variant="Light" onClick={(e) => {copyToClipboard(e, 'lol', availabilities, timeZone)}}>Copy</Button>
+                <Button variant="Light" onClick={(e) => {
+                  copyToClipboard(e, 'lol', availabilities, timeZone)}}>Copy</Button>
               </OverlayTrigger>
               }
 

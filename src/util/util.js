@@ -6,7 +6,7 @@ export function copyToClipboard(e, id, output, timeZone) {
     // It is capable of holding linebreaks (newlines) unlike "input" element
     const myFluffyTextarea = document.createElement('textarea');
 
-    // Step 2: Store your string in innerHTML of myFluffyTextarea element        
+    // Step 2: Store your string in innerHTML of myFluffyTextarea element   
     myFluffyTextarea.innerHTML = outputToStringCopy(output, timeZone);
 
     // Step3: find an id element within the body to append your myFluffyTextarea there temporarily
