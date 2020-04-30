@@ -9,6 +9,15 @@ import { onSelectEvent, onSelectAvailableSlot, eventStyleGetter } from './MyCale
 import './MyCalendar.scss';
 import './MyCalendar.css';
  
+
+// moment.locale('ko', {
+//   week: {
+//       dow: 1,
+//       doy: 1,
+//   },
+// });
+// BigCalendar.momentLocalizer(moment);
+
 const localizer = momentLocalizer(moment);
 
 
@@ -25,8 +34,8 @@ export default function MyCalendar() {
 
 
   var width = window.innerWidth;
-  const availableCalendarViews = (width > 600) ?  ['week', 'day'] : ['day'];
-  const defaultCalendarView = (width > 600) ?  'week' : 'day';
+  const availableCalendarViews = (width > 600) ?  ['work_week', 'week', 'day'] : ['day'];
+  const defaultCalendarView = (width > 600) ?  'work_week' : 'day';
 
   var height = 500;
 

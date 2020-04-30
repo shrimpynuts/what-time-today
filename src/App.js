@@ -30,8 +30,10 @@ var peep2 = require('./assets/peep' + rand.toString() + '.png');
 
 
 var offset = Intl.DateTimeFormat().resolvedOptions().timeZone;
-var USTimeZones = ["America/Los_Angeles", "America/Chicago", "America/New_York"];
-var AllTimeZones = [...USTimeZones.filter(tz => tz !== offset), offset];
+var USTimeZones = ["America/Los_Angeles", "America/Denver", "America/Chicago", "America/New_York"];
+var WorldWideTimeZones = ["Asia/Kolkata", "Asia/Shanghai", "Asia/Hong_Kong", "Asia/Tokyo", 
+  "Australia/Sydney", "Australia/Darwin", "Europe/Paris", "Europe/Berlin", "Etc/GMT"]
+var AllTimeZones = [offset, ...USTimeZones.filter(tz => tz !== offset), ...WorldWideTimeZones.filter(tz => tz !== offset)].sort((a, b) => a > b);
 
 function App() {
 
@@ -142,10 +144,17 @@ function App() {
               >
                   <DropdownButton 
                   variant="Light"
-                  drop={"down"}
-                  id="dropdown-basic-button" title={moment().tz(timeZone).zoneAbbr()}>
-                    {timeZones.map((timeZone) =>
-                      <Dropdown.Item as="a" onClick={() => {setTimeZone(timeZone)}}>{moment().tz(timeZone).zoneAbbr()}</Dropdown.Item>
+                  drop="down"
+                  data-flip="false"
+                  data-display="static"
+                  id="dropdown-button-drop-down" title={moment().tz(timeZone).zoneAbbr()}>
+                    {timeZones.sort((a, b) => a > b).map((timeZone) =>
+                      <Dropdown.Item
+                      data-display="static"
+                      data-flip="false"
+                      as="a" onClick={() => {setTimeZone(timeZone)}}>
+                        {width < 850 ? moment().tz(timeZone).zoneAbbr() : moment().tz(timeZone).zoneAbbr() + ' - ' + timeZone}
+                        </Dropdown.Item>
                     )}
                   </DropdownButton>
               </OverlayTrigger>
