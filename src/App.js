@@ -35,11 +35,15 @@ var WorldWideTimeZones = ["Asia/Kolkata", "Asia/Shanghai", "Asia/Hong_Kong", "As
   "Australia/Sydney", "Australia/Darwin", "Europe/Paris", "Europe/Berlin", "Etc/GMT"]
 var AllTimeZones = [offset, ...USTimeZones.filter(tz => tz !== offset), ...WorldWideTimeZones.filter(tz => tz !== offset)].sort((a, b) => a > b);
 
+export const messageTypes = ["Boring", "Cute", "Raw", "Inverse"];
+
 function App() {
 
   const [timeZone, setTimeZone] = useState(offset);
   const [timeZones, setTimeZones] = useState(AllTimeZones.filter((tz) => tz !== offset));
-
+  
+  const [messageType, setMessageType] = useState(messageTypes[0]);
+  
   useEffect(() => {
     setTimeZones(AllTimeZones.filter((tz) => tz !== timeZone));
   }, [timeZone]);
@@ -114,12 +118,12 @@ function App() {
                 placement={"top"}
                 overlay={
                   <Tooltip>
-                    Copies the text below to your clipboard.
+                    Copies the message below to your clipboard.
                   </Tooltip>
                 }
               >
                 <Button variant="Light" onClick={(e) => {
-                  copyToClipboard(e, 'lol', availabilities, timeZone)}}>Copy</Button>
+                  copyToClipboard(e, 'lol', availabilities, timeZone, messageType)}}>Copy</Button>
               </OverlayTrigger>
               }
 
@@ -158,12 +162,34 @@ function App() {
                     )}
                   </DropdownButton>
               </OverlayTrigger>
+
+              <OverlayTrigger
+                placement={"top"}
+                overlay={
+                  <Tooltip>
+                    Changes the message below.
+                  </Tooltip>
+                }
+              >
+                  <DropdownButton 
+                  variant="Light"
+                  drop="down"
+                  id="dropdown-button-drop-down" title={messageType}>
+                    {messageTypes.map((type) =>
+                      <Dropdown.Item
+                      as="a" onClick={() => {setMessageType(type)}}>
+                        {type}
+                        </Dropdown.Item>
+                    )}
+                  </DropdownButton>
+              </OverlayTrigger>
+
             </div>
 
         <Card className="output-card" classes={{ root: classes.card }} variant="outlined">
           <List style={{maxHeight: 240, overflow: 'auto'}}>
               <CardContent>
-              {outputToString(availabilities, timeZone).map((out, i) => {
+              {outputToString(availabilities, timeZone, messageType).map((out, i) => {
                 return <p key={i} style={{textAlign: "left", fontSize: 13}}>{out}</p>
               })}
               </CardContent>

@@ -1,3 +1,5 @@
+import {messageTypes} from '../App';
+ 
 // const monthNames = ["January", "February", "March", "April", "May", "June",
 //   "July", "August", "September", "October", "November", "December"];
 
@@ -19,9 +21,8 @@ function formatAMPM(date) {
 }
 
 
-export function outputToString(output, timeZone) {
+export function outputToString(output, timeZone, messageType) {
   // Currently only supporting single day availabilities
-
   if (!timeZone) {
     return ["Copy not working!! Notify me in the feedback form please!"];
   }
@@ -53,13 +54,25 @@ export function outputToString(output, timeZone) {
     let singleResult = `${day} (${monthNum}/${dayNum}) ${startTime} - ${endTime} ${shorttz}`;
     result.push(singleResult);
   }
-
-  result.unshift("I\'m available these times:");
+  
+  
+  if (messageTypes[0] === messageType) { // NORMAL
+    result.unshift("I\'m available these times:");
+  }
+  if (messageTypes[1] === messageType) { // CUTE
+    result.unshift("Can we please do one of these times 🥺👉👈?"); 
+  }
+  if (messageTypes[2] === messageType) { // RAW
+  }
+  if (messageTypes[3] === messageType) { // Inverse
+    result.unshift("I definitely cannot do these times:"); 
+  }
+  
   return result;
 }
 
-export function outputToStringCopy(output, timeZone) {
-  var out = outputToString(output, timeZone);
+export function outputToStringCopy(output, timeZone, messageType) {
+  var out = outputToString(output, timeZone, messageType);
   var result = out.join("\r\n");
   return result;
 }

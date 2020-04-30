@@ -83,6 +83,7 @@
   flex-direction: row;
   justify-content: center;
 }
+
 .not-homepage {
   flex: 1;
   padding: 20px;
