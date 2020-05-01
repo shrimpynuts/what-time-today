@@ -20,7 +20,7 @@ export function getAndDisplayEvents(dispatch) {
         if(!resp.error) {
           for(var i = 0; i < calendars.length; i++) {
             const calendar = calendars[i];
-            calendar.visible = true;
+            calendar.visible = calendar.selected;
             calendar.color = calendar.backgroundColor;
             dispatch(addCalendar(calendar));
 
@@ -64,4 +64,3 @@ export function getAndDisplayEvents(dispatch) {
   });
 
 }
-  
