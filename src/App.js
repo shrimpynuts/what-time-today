@@ -189,7 +189,7 @@ function App() {
       placement={"top"}
       overlay={
         <Tooltip>
-          Not everyone is from 'Murica.
+          Not everyone is from America.
         </Tooltip>
       }
     >
@@ -203,7 +203,7 @@ function App() {
       placement={"top"}
       overlay={
         <Tooltip>
-          Again, not everyone is from 'Murica.
+          Again, not everyone is from America.
         </Tooltip>
       }
     >
