@@ -64,9 +64,15 @@ export function outputToString(output, timeZone, messageType, AMPM, MonthDay) {
   if (messageTypes[1] === messageType) { // CUTE
     result.unshift("Can we please do one of these times 🥺👉👈?"); 
   }
-  if (messageTypes[2] === messageType) { // RAW
+  if (messageTypes[2] === messageType) { // AGGRESSIVE
+    result.unshift("This is the last time I'm sending you my availability 😡."); 
   }
-  if (messageTypes[3] === messageType) { // Inverse
+  if (messageTypes[3] === messageType) { // ELON
+    result = ["I don't have time."]
+  }
+  if (messageTypes[4] === messageType) { // RAW
+  }
+  if (messageTypes[5] === messageType) { // Inverse
     result.unshift("I definitely cannot do these times:"); 
   }
   

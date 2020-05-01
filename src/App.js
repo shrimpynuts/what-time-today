@@ -35,7 +35,7 @@ var WorldWideTimeZones = ["Asia/Kolkata", "Asia/Shanghai", "Asia/Hong_Kong", "As
   "Australia/Sydney", "Australia/Darwin", "Europe/Paris", "Europe/Berlin", "Etc/GMT"]
 var AllTimeZones = [offset, ...USTimeZones.filter(tz => tz !== offset), ...WorldWideTimeZones.filter(tz => tz !== offset)].sort((a, b) => a > b);
 
-export const messageTypes = ["Boring", "Cute", "Raw", "Inverse"];
+export const messageTypes = ["Boring", "Cute", "Aggressive", "Elon", "Raw", "Inverse"];
 
 function App() {
 
@@ -119,7 +119,7 @@ function App() {
       placement={"top"}
       overlay={
         <Tooltip>
-          Copies the message below to your clipboard.
+          Copy to your clipboard.
         </Tooltip>
       }
     >
@@ -132,7 +132,7 @@ function App() {
       placement={"top"}
       overlay={
         <Tooltip>
-          Deletes all availabilities on the calendar.
+          Made a mess? This cleans it up.
         </Tooltip>
       }
     >
@@ -143,7 +143,7 @@ function App() {
       placement={"top"}
       overlay={
         <Tooltip>
-          Changes the time zone that your availabilities are translated to.
+          Don't be rude, send it to them in <strong>their</strong> time zone.
         </Tooltip>
       }
     >
@@ -168,7 +168,7 @@ function App() {
         placement={"top"}
         overlay={
           <Tooltip>
-            Changes the message below.
+            Don't be boring.
           </Tooltip>
         }
       >
@@ -189,7 +189,7 @@ function App() {
       placement={"top"}
       overlay={
         <Tooltip>
-          Toggles AM/PM formatting in text below.
+          Not everyone is from 'Murica.
         </Tooltip>
       }
     >
@@ -203,7 +203,7 @@ function App() {
       placement={"top"}
       overlay={
         <Tooltip>
-          Toggles Month/Day formatting in text below.
+          Again, not everyone is from 'Murica.
         </Tooltip>
       }
     >
