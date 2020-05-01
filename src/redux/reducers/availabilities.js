@@ -14,8 +14,8 @@ function overlaps(a, b) {
 } 
 
 function isAllDay(existing) {
-  return existing.start.getHours() == 0 && existing.start.getMinutes == 0 
-  && existing.end.getHours() == 0 && existing.end.getMinutes == 0;
+  return existing.start.getHours() === 0 && existing.start.getMinutes === 0 
+  && existing.end.getHours() === 0 && existing.end.getMinutes === 0;
 }
 
 export default function(state = initialState, action) {
@@ -24,8 +24,8 @@ export default function(state = initialState, action) {
     case ADD_AVAILABILITY: {
       const { availability } = action.payload;
 
+      // Handle merging events
       let remove = [];
-
       for (let i = 0; i < state.availabilities.length; i++) {
         let existing = state.availabilities[i];
 
@@ -39,9 +39,7 @@ export default function(state = initialState, action) {
           remove.push(i);
         }
       }
-
       let newAvailabilities = state.availabilities.filter((v, i) => !(remove.includes(i)));
-
       return {
         ...state,
         availabilities: [...newAvailabilities, availability],

@@ -40,6 +40,7 @@ export const messageTypes = ["Boring", "Cute", "Raw", "Inverse"];
 function App() {
 
   const [AMPM, setAMPM] = useState(true);
+  const [MonthDay, setMonthDay] = useState(true);
   const [timeZone, setTimeZone] = useState(offset);
   const [timeZones, setTimeZones] = useState(AllTimeZones.filter((tz) => tz !== offset));
   
@@ -100,10 +101,13 @@ function App() {
     }
   }
 
-  const handleChange = (val) => {
+  const handleAMPMChange = (val) => {
     setAMPM(val.length !== 0);
   };
 
+  const handleMonthDayChange = (val) => {
+    setMonthDay(val.length !== 0);
+  };
 
   var width = window.innerWidth;
 
@@ -120,7 +124,7 @@ function App() {
       }
     >
       <Button variant="Light" onClick={(e) => {
-        copyToClipboard(e, 'lol', availabilities, timeZone, messageType, AMPM)}}>Copy</Button>
+        copyToClipboard(e, 'lol', availabilities, timeZone, messageType, AMPM, MonthDay)}}>Copy</Button>
     </OverlayTrigger>
     }
 
@@ -189,8 +193,24 @@ function App() {
         </Tooltip>
       }
     >
-        <ToggleButtonGroup type="checkbox" defaultValue={1} onChange={handleChange}>
+        <ToggleButtonGroup type="checkbox" defaultValue={1} onChange={handleAMPMChange}>
           <ToggleButton value={1} variant="Light">AM/PM</ToggleButton>
+        </ToggleButtonGroup>
+
+    </OverlayTrigger>
+
+    <OverlayTrigger
+      placement={"top"}
+      overlay={
+        <Tooltip>
+          Toggles Month/Day formatting in text below.
+        </Tooltip>
+      }
+    >
+        <ToggleButtonGroup type="checkbox" defaultValue={1} onChange={handleMonthDayChange}>
+          <ToggleButton value={1} variant="Light">{
+          width < 600 ? (MonthDay ? "M/D" : "D/M") : (MonthDay ? "Month/Day" : "Day/Month")
+          }</ToggleButton>
         </ToggleButtonGroup>
 
     </OverlayTrigger>
@@ -210,7 +230,7 @@ function App() {
         <Card className="output-card" classes={{ root: classes.card }} variant="outlined">
           <List style={{maxHeight: 240, overflow: 'auto'}}>
               <CardContent>
-              {outputToString(availabilities, timeZone, messageType, AMPM).map((out, i) => {
+              {outputToString(availabilities, timeZone, messageType, AMPM, MonthDay).map((out, i) => {
                 return <p key={i} style={{textAlign: "left", fontSize: 13}}>{out}</p>
               })}
               </CardContent>
