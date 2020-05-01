@@ -21,7 +21,7 @@ function formatAMPM(date) {
 }
 
 
-export function outputToString(output, timeZone, messageType) {
+export function outputToString(output, timeZone, messageType, AMPM) {
   // Currently only supporting single day availabilities
   if (!timeZone) {
     return ["Copy not working!! Notify me in the feedback form please!"];
@@ -48,10 +48,11 @@ export function outputToString(output, timeZone, messageType) {
     let monthNum = start.getMonth() + 1;
     let dayNum = start.getDate();
 
-    let startTime = formatAMPM(start);
-    let endTime = formatAMPM(end);
-    
+    let startTime = AMPM ? formatAMPM(start) : start.getHours() + ":" + (start.getMinutes()<10?'0':'') + start.getMinutes() ;
+    let endTime = AMPM ? formatAMPM(end) : end.getHours() + ":" + (end.getMinutes()<10?'0':'') + end.getMinutes() ;
+
     let singleResult = `${day} (${monthNum}/${dayNum}) ${startTime} - ${endTime} ${shorttz}`;
+
     result.push(singleResult);
   }
   
@@ -71,8 +72,8 @@ export function outputToString(output, timeZone, messageType) {
   return result;
 }
 
-export function outputToStringCopy(output, timeZone, messageType) {
-  var out = outputToString(output, timeZone, messageType);
+export function outputToStringCopy(output, timeZone, messageType, AMPM) {
+  var out = outputToString(output, timeZone, messageType, AMPM);
   var result = out.join("\r\n");
   return result;
 }

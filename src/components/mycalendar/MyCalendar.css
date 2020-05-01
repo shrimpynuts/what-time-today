@@ -2,10 +2,11 @@
     display: flex;
     flex-direction: column;
     /* justify-content: space-evenly; */
-    padding-right: 20px
+    padding-right: 20px;
 }
 
 .MyCalendar {
+    padding-top: 20px;
     display: flex;
     flex-direction: row;
     justify-content: stretch;

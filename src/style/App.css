@@ -49,9 +49,16 @@
 
 .sign-button.btn.btn-Light {
   text-align: center;
-  margin: 0 auto;
-  margin-bottom: 10px;
+  margin: 0 auto; 
+  margin-bottom: 10px; 
+
 }
+
+.btn.btn-Light:not(:disabled):not(.disabled).active, .btn.btn-Light:not(:disabled):not(.disabled):active, .show>.btn.btn-Light.dropdown-toggle {
+  background-color: #d6d6d6;
+  border-color: #d6d6d6;
+}
+
 
 .btn.btn-Light {
   border: 1px solid rgb(207, 207, 207);
@@ -60,7 +67,7 @@
   padding: 4px 15px 4px 15px;
   text-align: left;
   margin: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 10px !important;
 }
 
 
@@ -148,12 +155,18 @@
   /* .not-homepage {
     height: 50vh;
   } */
+
+  .btn.btn-Light {
+    padding: 5px 5px 5px 5px;
+  }
+  
+
   .dropdown-item {
     margin: 0 auto;
-    width: 60px;
+    width: 80px;
   }
   .dropdown-menu.show {
-    width: 60px;
+    width: 80px;
   }
 
   .dropdown-menu.show {

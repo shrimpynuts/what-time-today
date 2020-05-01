@@ -17,7 +17,7 @@ import { useDispatch } from "react-redux";
 import { getAvailabilities } from './redux/selectors';
 import { signIn, signOut, clearAllEvents, clearCalendars, clearAvailabilities } from './redux/actions';
 import { getAndDisplayEvents } from './util/gapi';
-import { DropdownButton, Dropdown, OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
+import { DropdownButton, ToggleButtonGroup, ToggleButton, Dropdown, OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
 // import {OverlayTrigger, Tooltip} from 'react-bootstrap'.
 import './style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -39,6 +39,7 @@ export const messageTypes = ["Boring", "Cute", "Raw", "Inverse"];
 
 function App() {
 
+  const [AMPM, setAMPM] = useState(true);
   const [timeZone, setTimeZone] = useState(offset);
   const [timeZones, setTimeZones] = useState(AllTimeZones.filter((tz) => tz !== offset));
   
@@ -99,8 +100,102 @@ function App() {
     }
   }
 
+  const handleChange = (val) => {
+    setAMPM(val.length !== 0);
+  };
+
+
   var width = window.innerWidth;
 
+  const toolbar = 
+  (
+  <div className="copytext">
+    {document.queryCommandSupported('copy') &&
+      <OverlayTrigger
+      placement={"top"}
+      overlay={
+        <Tooltip>
+          Copies the message below to your clipboard.
+        </Tooltip>
+      }
+    >
+      <Button variant="Light" onClick={(e) => {
+        copyToClipboard(e, 'lol', availabilities, timeZone, messageType, AMPM)}}>Copy</Button>
+    </OverlayTrigger>
+    }
+
+    <OverlayTrigger
+      placement={"top"}
+      overlay={
+        <Tooltip>
+          Deletes all availabilities on the calendar.
+        </Tooltip>
+      }
+    >
+      <Button variant="Light" onClick={() => {dispatch(clearAvailabilities());}}>Clear</Button> 
+    </OverlayTrigger>
+
+    <OverlayTrigger
+      placement={"top"}
+      overlay={
+        <Tooltip>
+          Changes the time zone that your availabilities are translated to.
+        </Tooltip>
+      }
+    >
+        <DropdownButton 
+        variant="Light"
+        drop="down"
+        data-flip="false"
+        data-display="static"
+        id="dropdown-button-drop-down" title={moment().tz(timeZone).zoneAbbr()}>
+          {timeZones.sort((a, b) => a > b).map((timeZone) =>
+            <Dropdown.Item
+            data-display="static"
+            data-flip="false"
+            as="a" onClick={() => {setTimeZone(timeZone)}}>
+              {width < 850 ? moment().tz(timeZone).zoneAbbr() : moment().tz(timeZone).zoneAbbr() + ' - ' + timeZone}
+              </Dropdown.Item>
+          )}
+        </DropdownButton>
+    </OverlayTrigger>
+
+      <OverlayTrigger
+        placement={"top"}
+        overlay={
+          <Tooltip>
+            Changes the message below.
+          </Tooltip>
+        }
+      >
+        <DropdownButton 
+        variant="Light"
+        drop="down"
+        id="dropdown-button-drop-down" title={messageType}>
+          {messageTypes.map((type) =>
+            <Dropdown.Item
+            as="a" onClick={() => {setMessageType(type)}}>
+              {type}
+              </Dropdown.Item>
+          )}
+        </DropdownButton>
+    </OverlayTrigger>
+
+    <OverlayTrigger
+      placement={"top"}
+      overlay={
+        <Tooltip>
+          Toggles AM/PM formatting in text below.
+        </Tooltip>
+      }
+    >
+        <ToggleButtonGroup type="checkbox" defaultValue={1} onChange={handleChange}>
+          <ToggleButton value={1} variant="Light">AM/PM</ToggleButton>
+        </ToggleButtonGroup>
+
+    </OverlayTrigger>
+
+  </div>);
 
   const home = (      
     <div className="Body">
@@ -110,86 +205,12 @@ function App() {
     <div>
     <div className="below-calendar">
       <img className="peep1" src={peep1} />
-          <div id="lol">   
-
-            <div className="copytext">
-              {document.queryCommandSupported('copy') &&
-                <OverlayTrigger
-                placement={"top"}
-                overlay={
-                  <Tooltip>
-                    Copies the message below to your clipboard.
-                  </Tooltip>
-                }
-              >
-                <Button variant="Light" onClick={(e) => {
-                  copyToClipboard(e, 'lol', availabilities, timeZone, messageType)}}>Copy</Button>
-              </OverlayTrigger>
-              }
-
-              <OverlayTrigger
-                placement={"top"}
-                overlay={
-                  <Tooltip>
-                    Deletes all availabilities on the calendar.
-                  </Tooltip>
-                }
-              >
-                <Button variant="Light" onClick={() => {dispatch(clearAvailabilities());}}>Clear</Button> 
-              </OverlayTrigger>
-
-              <OverlayTrigger
-                placement={"top"}
-                overlay={
-                  <Tooltip>
-                    Changes the time zone that your availabilities are translated to.
-                  </Tooltip>
-                }
-              >
-                  <DropdownButton 
-                  variant="Light"
-                  drop="down"
-                  data-flip="false"
-                  data-display="static"
-                  id="dropdown-button-drop-down" title={moment().tz(timeZone).zoneAbbr()}>
-                    {timeZones.sort((a, b) => a > b).map((timeZone) =>
-                      <Dropdown.Item
-                      data-display="static"
-                      data-flip="false"
-                      as="a" onClick={() => {setTimeZone(timeZone)}}>
-                        {width < 850 ? moment().tz(timeZone).zoneAbbr() : moment().tz(timeZone).zoneAbbr() + ' - ' + timeZone}
-                        </Dropdown.Item>
-                    )}
-                  </DropdownButton>
-              </OverlayTrigger>
-
-              <OverlayTrigger
-                placement={"top"}
-                overlay={
-                  <Tooltip>
-                    Changes the message below.
-                  </Tooltip>
-                }
-              >
-                  <DropdownButton 
-                  variant="Light"
-                  drop="down"
-                  id="dropdown-button-drop-down" title={messageType}>
-                    {messageTypes.map((type) =>
-                      <Dropdown.Item
-                      as="a" onClick={() => {setMessageType(type)}}>
-                        {type}
-                        </Dropdown.Item>
-                    )}
-                  </DropdownButton>
-              </OverlayTrigger>
-
-            </div>
-
+      <div id="lol">   
+          {toolbar}
         <Card className="output-card" classes={{ root: classes.card }} variant="outlined">
           <List style={{maxHeight: 240, overflow: 'auto'}}>
               <CardContent>
-              {outputToString(availabilities, timeZone, messageType).map((out, i) => {
+              {outputToString(availabilities, timeZone, messageType, AMPM).map((out, i) => {
                 return <p key={i} style={{textAlign: "left", fontSize: 13}}>{out}</p>
               })}
               </CardContent>

@@ -1,13 +1,13 @@
 import { outputToStringCopy } from './dateTime';
 
 // https://stackoverflow.com/questions/46041831/copy-to-clipboard-with-break-line
-export function copyToClipboard(e, id, output, timeZone, messageType) {
+export function copyToClipboard(e, id, output, timeZone, messageType, AMPM) {
     // Step 1: create a textarea element.
     // It is capable of holding linebreaks (newlines) unlike "input" element
     const myFluffyTextarea = document.createElement('textarea');
 
     // Step 2: Store your string in innerHTML of myFluffyTextarea element   
-    myFluffyTextarea.innerHTML = outputToStringCopy(output, timeZone, messageType);
+    myFluffyTextarea.innerHTML = outputToStringCopy(output, timeZone, messageType, AMPM);
 
     // Step3: find an id element within the body to append your myFluffyTextarea there temporarily
     const parentElement = document.getElementById(id);

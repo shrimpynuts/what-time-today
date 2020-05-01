@@ -13,7 +13,7 @@ export function onSelectEvent(event, dispatch) {
 // Also add the availability to the output for the parent component
 export function onSelectAvailableSlot(dispatch, slotInfo) {
     const newAvailability = {
-        'title': 'Availability',
+        'title': 'Availability 👌',
         'start': slotInfo.start,
         'end': slotInfo.end,
         'hexColor': "#464646",
