@@ -4,6 +4,7 @@ Todo based on feedback?:
 - [x] AM/PM Toggle
 - [x] 24hr Toggle
 - [x] Merging availabilities
+- [ ] Switch to whichti.me domain
 - [ ] Google verification
 - [ ] Add different availability types: Free, OOO, Busy, Busy (but could reschedule for right reason)
 - [ ] Have 24hr toggle also change the times on the calendar
