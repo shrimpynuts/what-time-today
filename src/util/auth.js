@@ -26,7 +26,7 @@ function initClient(setUser, authenticatedCallback) {
       'scope': SCOPES,
       'discoveryDocs': DISCOVERY_DOCS
   }).then(function () {
-    // console.log("Successfully initialized gapi client");
+    console.log("Successfully initialized gapi client");
     GoogleAuth = window.gapi.auth2.getAuthInstance();
     // Listen for sign-in state changes.
     GoogleAuth.isSignedIn.listen((status) => updateSigninStatus(status, setUser));
@@ -36,8 +36,8 @@ function initClient(setUser, authenticatedCallback) {
     authenticatedCallback();
     
   }).catch((err) => {
-    // console.log("Failed to initialize gapi client")
-    // console.log(err);
+    console.log("Failed to initialize gapi client")
+    console.log(err);
   });
 }
 

@@ -75,10 +75,11 @@ function App() {
 
   const setUserCallback = (user) => {
     if (user) {
+        let userProfile = user.getBasicProfile();
         let newUser = {
-          firstName: user.Pt.pW,
-          lastName: user.Pt.qU,
-          email: user.Pt.yu,
+          firstName: userProfile.getGivenName(),
+          lastName: userProfile.getFamilyName(),
+          email: userProfile.getEmail(),
         }
         dispatch(signIn(newUser));
         getAndDisplayEvents(dispatch);

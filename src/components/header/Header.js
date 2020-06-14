@@ -32,7 +32,7 @@ export default function Header(props) {
                       <Tooltip 
                       className="overlay"
                       style={{zIndex: 3}}>
-                        {user ? "Removes and revokes access to Google Calendar data." : "Imports Google Calendar events to calendar. I promise we're not doing anything sketchy with your data! 🥺" }
+                        {user ? "Removes and revokes access to Google Calendar data." : "Imports Google Calendar events to calendar." }
                         
                       </Tooltip>
                     }
