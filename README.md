@@ -5,7 +5,7 @@ Todo based on feedback?:
 - [x] 24hr Toggle
 - [x] Merging availabilities
 - [x] Add "Tweet" button
-- [ ] Switch to whichti.me domain
+- [ ] Switch to whichti.me domain?
 - [ ] Google verification
 - [ ] Add different availability types: Free, OOO, Busy, Busy (but could reschedule for right reason)
 - [ ] Have 24hr toggle also change the times on the calendar
@@ -15,3 +15,9 @@ Todo based on feedback?:
 - [ ] Clean up crappy codebase
 - [ ] Title/header that makes more sense
 - [ ] More timezones
+
+How to deploy:
+```
+$npm run build
+$gcloud app deploy
+```
