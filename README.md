@@ -5,8 +5,6 @@ Hate when a recruiter asks you for 1-2 hr time slots across the span of the next
 
 This is just a simple tool to help quickly summarize your time availability using easy drag-and-drop!
 
-The works: react, redux, google calendar api, react-big-calendar, momentjs
-
 ### Roadmap
 Nothing! Not actively under development currently.
 
@@ -38,3 +36,6 @@ $ npm run dev
 $ npm run build
 $ gcloud app deploy
 ```
+
+### The works
+React/redux, Google OAuth, Google Calendar API, react-big-calendar, moment.js
