@@ -1,6 +1,16 @@
+# What time today?
+
+Hate when people ask for your time availability?
+Hate when a recruiter asks you for 1-2 hr time slots across the span of the next two weeks?
+
+This is just a simple tool to help quickly summarize your time availability using easy drag-and-drop!
+
 The works: react, redux, google calendar api, react-big-calendar, momentjs
 
-Todo based on feedback?:
+### Roadmap
+Nothing! Not actively under development currently.
+
+### Icebox
 - [x] AM/PM Toggle
 - [x] 24hr Toggle
 - [x] Merging availabilities
@@ -16,8 +26,15 @@ Todo based on feedback?:
 - [ ] Title/header that makes more sense
 - [ ] More timezones
 
-How to deploy:
+### Run locally:
+(Needs a config.js file under src/util/config.js to supply Google API key and client id)
 ```
-$npm run build
-$gcloud app deploy
+$ npm install
+$ npm run dev
+```
+
+### Deploy:
+```
+$ npm run build
+$ gcloud app deploy
 ```
