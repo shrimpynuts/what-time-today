@@ -1,6 +1,7 @@
 # What time today?
 
 Hate when people ask for your time availability?
+
 Hate when a recruiter asks you for 1-2 hr time slots across the span of the next two weeks?
 
 This is just a simple tool to help quickly summarize your time availability using easy drag-and-drop!
