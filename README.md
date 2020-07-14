@@ -5,6 +5,8 @@ Hate when a recruiter asks you for 1-2 hr time slots across the span of the next
 
 This is just a simple tool to help quickly summarize your time availability using easy drag-and-drop!
 
+I'd love some [feedback](https://forms.gle/E83Y2mXJeLs9zLuJ7)
+
 ### Roadmap
 Nothing! Not actively under development currently.
 
