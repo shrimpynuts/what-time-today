@@ -2,9 +2,17 @@
 
 Hate when people ask for your time availability?
 
-Hate when a recruiter asks you for 1-2 hr time slots across the span of the next two weeks?
+Hate when a recruiter asks you for 1-2 hr time slots for an interview across the span of the next two weeks?!
 
-This is just a simple tool to help quickly summarize your time availability using easy drag-and-drop!
+To craft a response, with all of your available time slots, do you tab back and forth between your Google calendar and Gmail?!
+
+And even when you send those times, do they tell you that none of them work and to send them more??!!
+
+Do you not have the time/resources to use calendly, and would rather not do with the friction of when2meet and Doodle?
+
+If so, this is just a simple tool to help you!
+
+Just drag-and-drop!
 
 ![alt text](https://github.com/jonathancai11/what-time-today/blob/master/screenshot.png?raw=true)
 
