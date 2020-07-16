@@ -1,5 +1,7 @@
 # What time today?
 
+[![HitCount](http://hits.dwyl.com/jonathancai11/what-time-today.svg)](http://hits.dwyl.com/jonathancai11/what-time-today)
+
 Hate when people ask for your time availability?
 
 Hate when a recruiter asks you for 1-2 hr time slots for an interview across the span of the next two weeks?!
