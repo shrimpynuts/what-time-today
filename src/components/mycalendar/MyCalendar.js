@@ -76,8 +76,8 @@ export default function MyCalendar() {
       views={availableCalendarViews}
       onSelectEvent={(event, e) =>onSelectEvent(event, dispatch)}
       eventPropGetter={(eventStyleGetter)}
-      // scrollToTime={props.initDate}
-      min={minTime}
+      // scrollToTime={minTime}
+      // min={minTime}
       // max={maxTime}
       />
     </div>
