@@ -1,27 +1,46 @@
 .titlediv {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-left: 30px;
-    padding-right: 30px;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+}
 
-  h1.title {
-    display: inline-block;
-    font-family: 'Playfair Display', serif;
-    font-size: 60px;
-    padding: 0px;
-    font-weight: 10000;
-    color: black;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
+.titledivtitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.titledivtitle>div {
+  padding-left:10px;
+  padding-bottom:10px;
+}
+
+.titledivtitle>div>p {
+  padding-top:10px;
+  margin: 0px;
+  vertical-align: bottom;
+}
+
+h1.title {
+  display: inline-block;
+  font-family: 'Playfair Display', serif;
+  font-size: 60px;
+  padding: 0px;
+  font-weight: 10000;
+  color: black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 .overlay {
   z-index: 4;
 }
 
-.tooltip { z-index: 1151 !important; }
+.tooltip {
+  z-index: 1151 !important;
+}
 
 
 .sign-button {
@@ -37,10 +56,10 @@ h3.title {
   font-size: 30px;
   padding: 0px;
   margin-bottom: 0px;
-  
+
 }
 
-.overlay{
+.overlay {
   z-index: 2;
 }
 
@@ -54,19 +73,19 @@ h3.title {
 
 
 button {
-  display:inline-block;
-  padding:0.2em 1.2em;
-  margin:0 0.3em 0.3em 0;
-  border-radius:0.2em;
+  display: inline-block;
+  padding: 0.2em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.2em;
   box-sizing: border-box;
-  text-decoration:none;
-  font-family:'Roboto',sans-serif;
-  font-weight:400;
-  color:rgb(0, 0, 0);
-  background-color:#ffffff;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
   /* box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12); */
-  text-align:center;
-  position:relative;
+  text-align: center;
+  position: relative;
 }
 
 /* a.button7:active{
@@ -80,18 +99,27 @@ button {
  }
 } */
 
-  @media only screen and (max-device-width: 480px) {
-    h1.title {
-      padding-top: 20px;
-      font-size: 55px;
-    }
-    h3.title {
+@media only screen and (max-device-width: 480px) {
+  h1.title {
+    padding-top: 20px;
+    font-size: 55px;
+  }
+
+  h3.title {
     padding-bottom: 10px;
     font-size: 20px;
     margin: 0px;
-    }
-    .titlediv {
-      flex-direction: column;
-    }
-  } 
-  
+  }
+
+  .titlediv {
+    flex-direction: column;
+  }
+
+  .titledivtitle {
+    flex-direction: column;
+  }
+  .titledivtitle>div>p {
+    margin-top:-20px;
+    line-height:unset;
+  }  
+}
