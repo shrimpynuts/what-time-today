@@ -33,7 +33,7 @@ export default function Header(props) {
             </h1>
           </Link>
           <div>
-            &nbsp;<p>Has helped setup {counter} meetings to date!</p>
+            &nbsp;<p>Has helped setup {counter} meetings to date! 🎉</p>
           </div>
         </div>
 
