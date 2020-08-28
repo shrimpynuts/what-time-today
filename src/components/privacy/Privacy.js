@@ -14,7 +14,7 @@ export default function Privacy() {
 
                 <h2>Third Parties</h2>
                 <p>We use Google Analytics to track basic metrics about site performance and user acquisition.</p>
-                <p><b>Other than that, your data will is not (and will never be) shared publicly or with any third party.</b></p>
+                <p><b>Other than that, your data is not (and will never be) shared publicly or with any third party.</b></p>
 
                 <h2>Other</h2>
                 <p>This project is <a style={{ color: 'black' }} rel="noopener noreferrer" target="_blank" href="https://github.com/jonathancai11/what-time-today">open source</a>.</p>
