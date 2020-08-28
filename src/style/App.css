@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .App-border {
   flex: 1;
   background-color: black;
@@ -49,12 +50,14 @@
 
 .sign-button.btn.btn-Light {
   text-align: center;
-  margin: 0 auto; 
-  margin-bottom: 10px; 
+  margin: 0 auto;
+  margin-bottom: 10px;
 
 }
 
-.btn.btn-Light:not(:disabled):not(.disabled).active, .btn.btn-Light:not(:disabled):not(.disabled):active, .show>.btn.btn-Light.dropdown-toggle {
+.btn.btn-Light:not(:disabled):not(.disabled).active,
+.btn.btn-Light:not(:disabled):not(.disabled):active,
+.show>.btn.btn-Light.dropdown-toggle {
   background-color: #d6d6d6;
   border-color: #d6d6d6;
 }
@@ -98,7 +101,7 @@
   flex-direction: column;
   justify-content: center;
   /* height: 70vh; */
-}  
+}
 
 .output-card {
   margin-bottom: 20px;
@@ -124,13 +127,13 @@
   font-size: small;
 }
 
-.dropdown-item:hover {  
+.dropdown-item:hover {
   background-color: #ececec;
 }
 
 .dropdown-menu.show {
   z-index: 10;
-  border: 1px solid rgba(0,0,0,.15);
+  border: 1px solid rgba(0, 0, 0, .15);
   border-radius: .25rem;
   padding: .5rem 0;
   text-align: left;
@@ -142,19 +145,29 @@
   right: auto;
   bottom: auto;
   position: absolute;
-  top: 0px!important;
+  top: 0px !important;
   left: 0px;
   margin: 0px;
   right: auto;
-  bottom: auto!important;
-  transform: translate(5px, 36px)!important;
+  bottom: auto !important;
+  transform: translate(5px, 36px) !important;
   /* transform: translate3d(0px, 335px, 0px)!important; */
 }
 
+.privacy-page {
+  text-align: left;
+  width: 50%;
+  margin: 0 auto;
+}
+
 @media only screen and (max-device-width: 850px) {
+
   /* .not-homepage {
     height: 50vh;
   } */
+  .privacy-page {
+    width: unset;
+  }
 
   .btn.btn-Light {
     padding: 5px 2px 5px 2px;
@@ -164,6 +177,7 @@
     margin: 0 auto;
     width: 80px;
   }
+
   .dropdown-menu.show {
     width: 80px;
   }
@@ -183,10 +197,11 @@
   .Body {
     padding: 20px 20px 0px 20px;
   }
-  
+
   .peep1 {
     padding: 0px;
   }
+
   .peep2 {
     padding: 0px;
   }
@@ -196,6 +211,7 @@
   .peep1 {
     display: none;
   }
+
   .peep2 {
     display: none;
   }
