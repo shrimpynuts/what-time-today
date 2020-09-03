@@ -3,7 +3,7 @@ import { AppBar } from '@material-ui/core';
 import './Header.css'
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
 import GoogleButton from 'react-google-button'
 
 
@@ -57,7 +57,9 @@ export default function Header(props) {
             }
           >
             <GoogleButton
-              onClick={() => props.handleSignClick}
+              onClick={() => {
+                props.handleSignClick();
+              }}
             />
           </OverlayTrigger>}
         </div>
