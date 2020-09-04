@@ -45,23 +45,20 @@ export default function Header(props) {
             {user ? "Hi, " + user.firstName + "!" : "Hi, Guest!"}
           </h3>
 
-          {!user && <OverlayTrigger
+          <OverlayTrigger
             placement={"bottom"}
             overlay={
               <Tooltip
                 className="overlay"
                 style={{ zIndex: 3 }}>
                 {user ? "Removes and revokes access to Google Calendar data." : "Imports Google Calendar events to calendar."}
-
               </Tooltip>
             }
           >
-            <GoogleButton
-              onClick={() => {
-                props.handleSignClick();
-              }}
-            />
-          </OverlayTrigger>}
+            {!user ?
+              <GoogleButton onClick={props.handleSignClick()} /> :
+              <Button variant="Light" style={{ textAlign: "center" }} onClick={props.handleSignClick}>Log out</Button>}
+          </OverlayTrigger>
         </div>
       </div>
     </AppBar>
