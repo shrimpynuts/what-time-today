@@ -27,9 +27,13 @@ export function onSelectAvailableSlot(dispatch, slotInfo) {
 // Gets the style for each event rendered
 export function eventStyleGetter(event, start, end, isSelected) {
     let cursor;
+    let color;
+
     if (event.availability) {
+        color = 'white';
         cursor = 'pointer';
     } else {
+        color = 'black';
         cursor = 'auto';
     }
     const backgroundColor = event.hexColor;
@@ -37,8 +41,7 @@ export function eventStyleGetter(event, start, end, isSelected) {
         backgroundColor: backgroundColor,
         borderRadius: '5px',
         opacity: 1,
-        color: 'white',
-        border: '0px',
+        color: color,
         display: 'block',
         cursor: cursor,
         visible: false,

@@ -160,6 +160,10 @@
   margin: 0 auto;
 }
 
+.rbc-event {
+  border: .05em solid gray !important;
+}
+
 @media only screen and (max-device-width: 850px) {
 
   /* .not-homepage {
