@@ -18,8 +18,7 @@ function initClient(setUser, authenticatedCallback) {
   // Retrieve the discovery document for version 3 of Google Drive API.
   // In practice, your app can retrieve one or more discovery documents.
 
-  // console.log("About to try to initialize gapi client");
-
+  console.log("About to try to initialize gapi client");
   window.gapi.client.init({
       'apiKey': apiKey,
       'clientId': clientId,

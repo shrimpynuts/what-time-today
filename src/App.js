@@ -46,6 +46,28 @@ function App() {
 
   const [messageType, setMessageType] = useState(messageTypes[0]);
 
+  const setUserCallback = (user) => {
+    if (user) {
+      let userProfile = user.getBasicProfile();
+      let newUser = {
+        firstName: userProfile.getGivenName(),
+        lastName: userProfile.getFamilyName(),
+        email: userProfile.getEmail(),
+      }
+      dispatch(signIn(newUser));
+      getAndDisplayEvents(dispatch);
+    } else {
+      // dispatch(signOut());
+    }
+  }
+
+  const authenticatedCallback = () => { }
+
+  useEffect(() => {
+    console.log("Loading client");
+    handleClientLoad(setUserCallback, authenticatedCallback);
+  }, []);
+
   useEffect(() => {
     setTimeZones(AllTimeZones.filter((tz) => tz !== timeZone));
   }, [timeZone]);
@@ -68,36 +90,11 @@ function App() {
     dispatch(clearCalendars());
   }
 
-  useEffect(() => {
-    handleClientLoad(setUserCallback, authenticatedCallback);
-  }, []);
-
-  const setUserCallback = (user) => {
-    if (user) {
-      let userProfile = user.getBasicProfile();
-      let newUser = {
-        firstName: userProfile.getGivenName(),
-        lastName: userProfile.getFamilyName(),
-        email: userProfile.getEmail(),
-      }
-      dispatch(signIn(newUser));
-      getAndDisplayEvents(dispatch);
-    } else {
-      // dispatch(signOut());
-    }
-  }
-
-  const authenticatedCallback = () => {
-    // console.log("Already authenticated, requesting calendar now");
-    // ref.current.getAndDisplayEvents();
-  }
-
   const handleSignClick = () => {
     // If we sign out remove events
     if (handleAuthClick()) {
       signOutOfApp();
     } else {
-      // console.log("Successfully authenticated after clicking sign in, requesting calendar now");
     }
   }
 
@@ -159,8 +156,9 @@ function App() {
             data-flip="false"
             data-display="static"
             id="dropdown-button-drop-down" title={moment().tz(timeZone).zoneAbbr()}>
-            {timeZones.sort((a, b) => a > b).map((timeZone) =>
+            {timeZones.sort((a, b) => a > b).map((timeZone, i) =>
               <Dropdown.Item
+                key={i}
                 data-display="static"
                 data-flip="false"
                 as="a" onClick={() => { setTimeZone(timeZone) }}>
