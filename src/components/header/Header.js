@@ -35,32 +35,43 @@ export default function Header(props) {
             </h1>
           </Link>
           <div>
-            &nbsp;<p>Has helped setup {counter} meetings to date! 🎉</p>
+            &nbsp;<p>Helped setup {counter} meetings to date! 🎉</p>
           </div>
         </div>
 
-        <div className="toolbar-buttons">
+        <div>
 
-          <h3 className="title">
-            {user ? "Hi, " + user.firstName + "!" : "Hi, Guest!"}
-          </h3>
-
-          {!user ? <OverlayTrigger
-            placement={"bottom"}
-            overlay={
-              <Tooltip
-                className="overlay"
-                style={{ zIndex: 3 }}>
-                {"Imports Google Calendar events to calendar."}
-              </Tooltip>
-            }
+          <a href="https://www.producthunt.com/posts/what-time-today?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-what-time-today" 
+          target="_blank"
           >
+            <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=256189&theme=light"
+              alt="What Time Today? - Send time availability in seconds! | Product Hunt Embed"
+              // style="width: 250px; height: 54px;"
+              width={250}
+              height={54} className="product-hunt"/></a>
+          <div className="toolbar-buttons">
 
-            <GoogleButton onClick={props.handleSignClick} />
-          </OverlayTrigger>
-            :
-            <Button variant="Light" onClick={props.handleSignClick}>Log out</Button>
-          }
+            <h3 className="title">
+              {user ? "Hi, " + user.firstName + "!" : "Hi, Guest!"}
+            </h3>
+
+            {!user ? <OverlayTrigger
+              placement={"bottom"}
+              overlay={
+                <Tooltip
+                  className="overlay"
+                  style={{ zIndex: 3 }}>
+                  {"Imports Google Calendar events to calendar."}
+                </Tooltip>
+              }
+            >
+
+              <GoogleButton onClick={props.handleSignClick} />
+            </OverlayTrigger>
+              :
+              <Button variant="Light" onClick={props.handleSignClick}>Log out</Button>
+            }
+          </div>
         </div>
       </div>
     </AppBar>

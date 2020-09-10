@@ -23,6 +23,12 @@
   vertical-align: bottom;
 }
 
+.product-hunt {
+  display:inline-block;
+  padding: 5px;
+  margin: 15px;
+}
+
 h1.title {
   display: inline-block;
   font-family: 'Playfair Display', serif;
@@ -106,8 +112,12 @@ button {
 
 @media only screen and (max-device-width: 480px) {
   h1.title {
-    padding-top: 20px;
     font-size: 55px;
+    margin: 0;
+  }
+
+  .product-hunt {
+    margin: unset;
   }
 
   h3.title {
@@ -124,7 +134,7 @@ button {
     flex-direction: column;
   }
   .titledivtitle>div>p {
-    margin-top:-20px;
+    margin-top:-30px;
     line-height:unset;
   }  
 }

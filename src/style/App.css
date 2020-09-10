@@ -41,11 +41,9 @@
 
 
 .toolbar-buttons {
-  /* top: 50%; */
-  display: flex;
+  display:inline-block;
   flex-direction: column;
   justify-content: center;
-  float: right
 }
 
 .sign-button.btn.btn-Light {
