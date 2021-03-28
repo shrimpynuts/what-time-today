@@ -16,7 +16,7 @@ If so, this is just a simple tool to help you!
 
 Just drag-and-drop!
 
-![alt text](https://github.com/jonathancai11/what-time-today/blob/master/screenshot.png?raw=true)
+![alt text](https://i.imgur.com/N4ANNsk.png)
 
 
 If you have some feedback, feel free to put it [here](https://forms.gle/E83Y2mXJeLs9zLuJ7).
