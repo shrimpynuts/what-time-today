@@ -1,43 +1,46 @@
-import { apiKey, clientId } from './config'
-// import { useDispatch } from "react-redux";
-// import { signIn } from '../redux/actions';
-
-
 var GoogleAuth; // Google Auth object.
-var SCOPES = 'https://www.googleapis.com/auth/calendar.events.readonly https://www.googleapis.com/auth/calendar.readonly';
-var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+var SCOPES =
+  "https://www.googleapis.com/auth/calendar.events.readonly https://www.googleapis.com/auth/calendar.readonly";
+var DISCOVERY_DOCS = [
+  "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
+];
 
 export function handleClientLoad(setUser, authenticatedCallback) {
   // Load the API's client and auth2 modules.
   // Call the initClient function after the modules load.
-  window.gapi.load('client:auth2', () => {initClient(setUser, authenticatedCallback)});
+  window.gapi.load("client:auth2", () => {
+    initClient(setUser, authenticatedCallback);
+  });
 }
 
 function initClient(setUser, authenticatedCallback) {
-
   // Retrieve the discovery document for version 3 of Google Drive API.
   // In practice, your app can retrieve one or more discovery documents.
 
   console.log("About to try to initialize gapi client");
-  window.gapi.client.init({
-      'apiKey': apiKey,
-      'clientId': clientId,
-      'scope': SCOPES,
-      'discoveryDocs': DISCOVERY_DOCS
-  }).then(function () {
-    console.log("Successfully initialized gapi client");
-    GoogleAuth = window.gapi.auth2.getAuthInstance();
-    // Listen for sign-in state changes.
-    GoogleAuth.isSignedIn.listen((status) => updateSigninStatus(status, setUser));
+  window.gapi.client
+    .init({
+      apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+      clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+      scope: SCOPES,
+      discoveryDocs: DISCOVERY_DOCS,
+    })
+    .then(function () {
+      console.log("Successfully initialized gapi client");
+      GoogleAuth = window.gapi.auth2.getAuthInstance();
+      // Listen for sign-in state changes.
+      GoogleAuth.isSignedIn.listen((status) =>
+        updateSigninStatus(status, setUser)
+      );
 
-    setSigninStatus(null, setUser);
+      setSigninStatus(null, setUser);
 
-    authenticatedCallback();
-    
-  }).catch((err) => {
-    console.log("Failed to initialize gapi client")
-    console.log(err);
-  });
+      authenticatedCallback();
+    })
+    .catch((err) => {
+      console.log("Failed to initialize gapi client");
+      console.log(err);
+    });
 }
 
 function updateSigninStatus(status, setUser) {
@@ -66,12 +69,12 @@ export function handleAuthClick() {
 }
 
 export function userIsAuthorized() {
-    if (GoogleAuth === undefined) {
-        // console.log("Google Auth not initialized yet");
-        return false;
-    } else {
-        return GoogleAuth.isSignedIn.get();
-    }
+  if (GoogleAuth === undefined) {
+    // console.log("Google Auth not initialized yet");
+    return false;
+  } else {
+    return GoogleAuth.isSignedIn.get();
+  }
 }
 
 export function revokeAccess() {
