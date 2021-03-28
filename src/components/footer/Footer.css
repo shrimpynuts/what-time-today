@@ -1,8 +1,10 @@
-
 .footer {
-    color: white;
-    background-color: black;
-    padding-top: 25px;
-    padding-bottom: 25px;
-  }
-  
+  color: white;
+  background-color: black;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.footer > a:hover {
+  color: white;
+}
