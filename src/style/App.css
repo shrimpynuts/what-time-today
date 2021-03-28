@@ -39,9 +39,8 @@
   visibility: hidden;
 }
 
-
 .toolbar-buttons {
-  display:inline-block;
+  display: inline-block;
   flex-direction: column;
   justify-content: center;
 }
@@ -50,16 +49,14 @@
   text-align: center;
   margin: 0 auto;
   margin-bottom: 10px;
-
 }
 
 .btn.btn-Light:not(:disabled):not(.disabled).active,
 .btn.btn-Light:not(:disabled):not(.disabled):active,
-.show>.btn.btn-Light.dropdown-toggle {
+.show > .btn.btn-Light.dropdown-toggle {
   background-color: #d6d6d6;
   border-color: #d6d6d6;
 }
-
 
 .btn.btn-Light {
   border: 1px solid rgb(207, 207, 207);
@@ -70,7 +67,6 @@
   margin: 5px;
   margin-bottom: 10px !important;
 }
-
 
 .below-calendar {
   display: flex;
@@ -114,7 +110,7 @@
   cursor: pointer;
   text-decoration: none;
   display: block;
-  padding: .25rem 1.5rem;
+  padding: 0.25rem 1.5rem;
   clear: both;
   font-weight: 400;
   color: #212529;
@@ -131,9 +127,9 @@
 
 .dropdown-menu.show {
   z-index: 10;
-  border: 1px solid rgba(0, 0, 0, .15);
-  border-radius: .25rem;
-  padding: .5rem 0;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  padding: 0.5rem 0;
   text-align: left;
   background-color: white;
   position: absolute;
@@ -159,11 +155,18 @@
 }
 
 .rbc-event {
-  border: .05em solid gray !important;
+  border: 0px solid gray !important;
+}
+
+.rbc-event-content {
+  font-weight: bold;
+}
+
+.rbc-event-label {
+  margin-bottom: -2px;
 }
 
 @media only screen and (max-device-width: 850px) {
-
   /* .not-homepage {
     height: 50vh;
   } */
