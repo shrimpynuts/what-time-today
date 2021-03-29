@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding: 12px 24px;
 }
 
 .titledivtitle {
@@ -12,27 +11,20 @@
   justify-content: space-between;
 }
 
-.titledivtitle>div {
-  padding-left:10px;
-  padding-bottom:10px;
-}
-
-.titledivtitle>div>p {
-  padding-top:10px;
-  margin: 0px;
-  vertical-align: bottom;
+.titledivtitle > div {
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
 
 .product-hunt {
-  display:inline-block;
+  display: inline-block;
   padding: 5px;
   margin: 15px;
 }
 
 h1.title {
   display: inline-block;
-  font-family: 'Playfair Display', serif;
-  font-size: 60px;
+  font-family: "Playfair Display", serif;
   padding: 0px;
   font-weight: 10000;
   color: black;
@@ -40,7 +32,7 @@ h1.title {
   margin-bottom: 10px;
 }
 
-.toolbar-buttons>div {
+.toolbar-buttons > div {
   margin: 0 auto;
   margin-bottom: 10px;
 }
@@ -53,7 +45,6 @@ h1.title {
   z-index: 1151 !important;
 }
 
-
 .sign-button {
   width: 150px;
   margin: 0 auto;
@@ -63,25 +54,19 @@ h1.title {
 
 h3.title {
   display: inline-block;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 30px;
   padding: 0px;
   margin-bottom: 0px;
-
 }
 
 .overlay {
   z-index: 2;
 }
 
-p {
-  margin: 10px;
-}
-
 h3.title {
   margin-bottom: 5px;
 }
-
 
 button {
   display: inline-block;
@@ -90,51 +75,19 @@ button {
   border-radius: 0.2em;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   color: rgb(0, 0, 0);
   background-color: #ffffff;
-  /* box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12); */
   text-align: center;
   position: relative;
 }
 
-/* a.button7:active{
-   box-shadow:inset 0 0.6em 2em -0.3em rgba(0,0,0,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
-} */
-
-/* @media all and (max-width:30em){
- button7 {
-  display:block;
-  margin:0.4em auto;
- }
-} */
-
 @media only screen and (max-device-width: 480px) {
-  h1.title {
-    font-size: 55px;
-    margin: 0;
-  }
-
   .product-hunt {
     margin: unset;
   }
-
   h3.title {
-    padding-bottom: 10px;
     font-size: 20px;
-    margin: 0px;
   }
-
-  .titlediv {
-    flex-direction: column;
-  }
-
-  .titledivtitle {
-    flex-direction: column;
-  }
-  .titledivtitle>div>p {
-    margin-top:-30px;
-    line-height:unset;
-  }  
 }

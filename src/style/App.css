@@ -19,7 +19,7 @@
 
 .Body {
   flex: 1;
-  padding: 30px 30px 0px 30px;
+  padding: 20px 20px 0px 20px;
 }
 
 .peep1 {
@@ -72,13 +72,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* padding-bottom: -20px; */
-  padding-top: 30px;
+  margin-top: 20px;
 }
 
 .privacy-link {
   color: white;
-  /* float: right; */
   padding-right: 40px;
 }
 
@@ -94,12 +92,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* height: 70vh; */
 }
 
 .output-card {
   margin-bottom: 20px;
-  /* margin-left: 20px; */
 }
 
 #lol {

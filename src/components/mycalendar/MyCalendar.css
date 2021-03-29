@@ -1,26 +1,24 @@
 .CalendarList {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: space-evenly; */
-    padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  padding-right: 20px;
 }
 
 .MyCalendar {
-    padding-top: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: stretch;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
 }
 
-
 @media only screen and (max-device-width: 480px) {
-    .calendar-paper {
-        display: none;
-    }
-    .big-calendar {
-        width: 200px;
-    }
-    .rbc-toolbar .rbc-toolbar-label {
-        padding-top: 10px;
-    }
+  .calendar-paper {
+    display: none;
+  }
+  .big-calendar {
+    width: 200px;
+  }
+  .rbc-toolbar .rbc-toolbar-label {
+    padding-top: 10px;
+  }
 }

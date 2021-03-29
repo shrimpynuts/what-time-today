@@ -1,8 +1,7 @@
 .footer {
   color: white;
   background-color: black;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding: 12px 0px;
 }
 
 .footer > a:hover {
