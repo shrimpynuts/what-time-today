@@ -6,4 +6,11 @@ import calendars from "./calendars";
 import events from "./events";
 import availabilities from "./availabilities";
 
-export default combineReducers({ availabilities, events, calendars, todos, visibilityFilter, user});
+export default combineReducers({
+  availabilities,
+  events,
+  calendars,
+  todos,
+  visibilityFilter,
+  user,
+});

@@ -1,8 +1,8 @@
 import { ADD_CALENDAR, TOGGLE_CALENDAR, CLEAR_CALENDARS } from "../actionTypes";
 
-const initialState = {calendars: []};
+const initialState = { calendars: [] };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case ADD_CALENDAR: {
       const { calendar } = action.payload;
@@ -11,7 +11,7 @@ export default function(state = initialState, action) {
         calendars: [...state.calendars, calendar],
       };
     }
-    
+
     case TOGGLE_CALENDAR: {
       const { calendar } = action.payload;
       let newCalendars = [...state.calendars];
@@ -22,15 +22,15 @@ export default function(state = initialState, action) {
         }
       }
       return {
-          ...state,
-          calendars: newCalendars,
-        };
+        ...state,
+        calendars: newCalendars,
+      };
     }
 
     case CLEAR_CALENDARS: {
-      return ({
+      return {
         calendars: [],
-      })
+      };
     }
 
     default:
