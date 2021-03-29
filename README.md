@@ -1,8 +1,10 @@
 # Fuck Calendly
 
-Just mark your time availability on the calendar, and click copy to send the text!
+Stop sending me Calendly links, please send me text like a civilized person.
 
-If you have some feedback, feel free to reach out to me on [Twitter](https://twitter.com/jonathanmcai).
+Just mark your time availability on the calendar, and click copy.
+
+Reach out to me on [Twitter](https://twitter.com/jonathanmcai) for questions/concerns/feature requests.
 
 ### Roadmap
 Nothing! Not actively under development currently.
