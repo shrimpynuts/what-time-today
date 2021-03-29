@@ -1,7 +1,4 @@
-import { messageTypes } from "../App";
-
-// const monthNames = ["January", "February", "March", "April", "May", "June",
-//   "July", "August", "September", "October", "November", "December"];
+import { messageTypes } from "../components/Home";
 
 const dayNames = [
   "Sunday",
@@ -15,8 +12,8 @@ const dayNames = [
 
 const moment = require("moment-timezone");
 
+// https://stackoverflow.com/questions/8888491/how-do-you-display-javascript-datetime-in-12-hour-am-pm-format
 function formatAMPM(date) {
-  // https://stackoverflow.com/questions/8888491/how-do-you-display-javascript-datetime-in-12-hour-am-pm-format
   var hours = date.getHours();
   var minutes = date.getMinutes();
   var ampm = hours >= 12 ? "pm" : "am";
