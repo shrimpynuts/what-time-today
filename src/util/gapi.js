@@ -33,9 +33,7 @@ export function getAndDisplayEvents(dispatch) {
             })
             .then(function (response) {
               var events = response.result.items;
-              // var calendarEvents = [];
               var i;
-              console.log(calendar);
               var color = calendar.backgroundColor;
               for (i = 0; i < events.length; i++) {
                 var event = events[i];
@@ -50,7 +48,6 @@ export function getAndDisplayEvents(dispatch) {
                 };
                 dispatch(addEvent(calendarEvent));
               }
-              // addToEvents(calendarEvents);
             });
         } // end for all calendars
       } else {
