@@ -29,6 +29,7 @@ function App() {
         firstName: userProfile.getGivenName(),
         lastName: userProfile.getFamilyName(),
         email: userProfile.getEmail(),
+        img: userProfile.getImageUrl(),
       };
       dispatch(signIn(newUser));
       getAndDisplayEvents(dispatch);

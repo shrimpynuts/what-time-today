@@ -1,22 +1,16 @@
 import React from "react";
 import { AppBar } from "@material-ui/core";
 import { useSelector } from "react-redux";
-import { OverlayTrigger, Tooltip, Button } from "react-bootstrap";
+import { OverlayTrigger, Tooltip, Button, Image } from "react-bootstrap";
 import GoogleButton from "react-google-button";
 import "./Header.css";
 
 export default function Header(props) {
   const user = useSelector((state) => state.user);
-
   return (
     <AppBar position="static" style={{ background: "white", color: "black" }}>
       <div className="titlediv">
-        {user && (
-          <h3 className="title">
-            {user ? "Hi, " + user.firstName + "!" : "Hi, Guest!"}
-          </h3>
-        )}
-
+        {user && <Image src={user.img} roundedCircle width={40} height={40} />}
         {!user ? (
           <OverlayTrigger
             placement={"bottom"}
