@@ -256,7 +256,7 @@ export default function Home() {
               classes={{ root: classes.card }}
               variant="outlined"
             >
-              <List style={{ maxHeight: 185, overflow: "auto" }}>
+              <List style={{ maxHeight: 150, overflow: "auto" }}>
                 <CardContent>
                   {outputToString(
                     availabilities,
