@@ -17,14 +17,6 @@ import {
 import "./MyCalendar.scss";
 import "./MyCalendar.css";
 
-// moment.locale('ko', {
-//   week: {
-//       dow: 1,
-//       doy: 1,
-//   },
-// });
-// BigCalendar.momentLocalizer(moment);
-
 const localizer = momentLocalizer(moment);
 
 export default function MyCalendar() {

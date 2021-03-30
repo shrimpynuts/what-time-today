@@ -1,3 +1,7 @@
+.header {
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 40%);
+}
+
 .titlediv {
   display: flex;
   flex-direction: row;
