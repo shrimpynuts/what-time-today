@@ -1,5 +1,4 @@
 .App {
-  /* padding: 0px 40px 0px 40px; */
   text-align: center;
   background-color: white;
   height: 100vh;
@@ -37,12 +36,6 @@
 
 .textbox {
   visibility: hidden;
-}
-
-.toolbar-buttons {
-  display: inline-block;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .sign-button.btn.btn-Light {
@@ -171,7 +164,7 @@
   }
 
   .btn.btn-Light {
-    padding: 5px 2px 5px 2px;
+    padding: 5px 4px;
   }
 
   .dropdown-item {
@@ -198,22 +191,10 @@
   .Body {
     padding: 20px 20px 0px 20px;
   }
-
-  .peep1 {
-    padding: 0px;
-  }
-
-  .peep2 {
-    padding: 0px;
-  }
 }
 
 @media only screen and (max-device-width: 480px) {
-  .peep1 {
-    display: none;
-  }
-
-  .peep2 {
-    display: none;
+  .Body {
+    padding: 12px 12px 0px 12px;
   }
 }

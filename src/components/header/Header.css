@@ -15,36 +15,6 @@
   justify-content: space-between;
 }
 
-.titledivtitle > div {
-  padding-left: 10px;
-  padding-bottom: 10px;
-}
-
-.product-hunt {
-  display: inline-block;
-  padding: 5px;
-  margin: 15px;
-}
-
-h1.title {
-  display: inline-block;
-  font-family: "Playfair Display", serif;
-  padding: 0px;
-  font-weight: 10000;
-  color: black;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.toolbar-buttons > div {
-  margin: 0 auto;
-  margin-bottom: 10px;
-}
-
-.overlay {
-  z-index: 4;
-}
-
 .tooltip {
   z-index: 1151 !important;
 }
@@ -54,22 +24,6 @@ h1.title {
   margin: 0 auto;
   float: left;
   margin-bottom: 20px;
-}
-
-h3.title {
-  display: inline-block;
-  font-family: "Playfair Display", serif;
-  font-size: 30px;
-  padding: 0px;
-  margin-bottom: 0px;
-}
-
-.overlay {
-  z-index: 2;
-}
-
-h3.title {
-  margin-bottom: 5px;
 }
 
 button {
@@ -91,7 +45,7 @@ button {
   .product-hunt {
     margin: unset;
   }
-  h3.title {
-    font-size: 20px;
+  .titlediv {
+    padding: 4px 24px;
   }
 }
