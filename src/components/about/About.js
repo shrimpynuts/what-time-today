@@ -19,7 +19,7 @@ export default function About() {
         <p>
           Made by{" "}
           <a
-            style={{ color: "black" }}
+            style={{ color: "black", textDecoration: "underline" }}
             target="_blank"
             rel="noopener noreferrer"
             href="https://twitter.com/jonathanmcai"
@@ -28,20 +28,21 @@ export default function About() {
           </a>
           .
         </p>
+        <p>Stop sending me Calendly links. </p>
         <p>
-          Code is{" "}
+          For feedback, questions, and inquiries, shoot me a DM{" "}
           <a
-            style={{ color: "black" }}
+            style={{ color: "black", textDecoration: "underline" }}
             target="_blank"
             rel="noopener noreferrer"
-            href="https://github.com/jonathancai11/what-time-today"
+            href="https://twitter.com/jonathanmcai"
           >
             here
           </a>
           .
         </p>
         <p>April 2020.</p>
-        <p>Created {counter} events so far!</p>
+        <p>Used {counter} times so far.</p>
       </div>
     </div>
   );

@@ -15,6 +15,10 @@
   justify-content: space-between;
 }
 
+.avatar {
+  margin-left: 12px;
+}
+
 .tooltip {
   z-index: 1151 !important;
 }
