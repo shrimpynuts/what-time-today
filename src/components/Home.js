@@ -126,7 +126,7 @@ export default function Home() {
 
         <OverlayTrigger
           placement={"top"}
-          overlay={<Tooltip>Made a mess? This cleans it up.</Tooltip>}
+          overlay={<Tooltip>Clean up your mess.</Tooltip>}
         >
           <Button
             variant="Light"
