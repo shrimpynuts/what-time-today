@@ -1,6 +1,6 @@
-# What Time Today?
+# What Time Today
 
-Stop sending me Calendly links, please send me text like a civilized person.
+A simple tool to help you send someone your calendar availability.
 
 Just mark your time availability on the calendar, and click copy.
 
