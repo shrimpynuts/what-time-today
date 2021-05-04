@@ -1,4 +1,4 @@
-# Fuck Calendly
+# What Time Today?
 
 Stop sending me Calendly links, please send me text like a civilized person.
 
