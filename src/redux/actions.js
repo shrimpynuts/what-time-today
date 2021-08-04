@@ -4,11 +4,14 @@ import {
   SET_FILTER,
   SIGNIN,
   SIGNOUT,
+  SIGNOUTALL,
   ADD_CALENDAR,
   TOGGLE_CALENDAR,
   CLEAR_CALENDARS,
+  CLEAR_SPECIFIC_CALENDAR,
   ADD_EVENT,
   CLEAR_ALL_EVENTS,
+  CLEAR_SPECIFIC_EVENTS,
   ADD_AVAILABILITY,
   REMOVE_AVAILABILITY,
   CLEAR_AVAILABILITIES,
@@ -36,8 +39,15 @@ export const signIn = (user) => ({
   },
 });
 
-export const signOut = () => ({
+export const signOut = (email) => ({
   type: SIGNOUT,
+  payload: {
+    email: email,
+  },
+});
+
+export const signOutAll = () => ({
+  type: SIGNOUTALL,
 });
 
 export const addCalendar = (calendar) => ({
@@ -58,6 +68,13 @@ export const clearCalendars = () => ({
   type: CLEAR_CALENDARS,
 });
 
+export const clearSpecificCalendar = (email) => ({
+  type: CLEAR_SPECIFIC_CALENDAR,
+  payload: {
+    email: email,
+  }
+});
+
 export const addEvent = (event) => ({
   type: ADD_EVENT,
   payload: {
@@ -67,6 +84,13 @@ export const addEvent = (event) => ({
 
 export const clearAllEvents = () => ({
   type: CLEAR_ALL_EVENTS,
+});
+
+export const clearSpecificEvents = (email) => ({
+  type: CLEAR_SPECIFIC_EVENTS,
+  payload: {
+    email: email,
+  }
 });
 
 export const addAvailability = (availability) => ({

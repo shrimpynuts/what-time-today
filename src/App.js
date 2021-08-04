@@ -6,12 +6,15 @@ import Privacy from "./components/privacy/Privacy";
 import About from "./components/about/About";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
-import { handleClientLoad, handleAuthClick } from "./util/auth";
+import { handleClientLoad, forceSignIn, forceSignOut } from "./util/auth";
 import {
   signIn,
   signOut,
+  signOutAll,
   clearAllEvents,
+  clearSpecificEvents,
   clearCalendars,
+  clearSpecificCalendar,
 } from "./redux/actions";
 import { getAndDisplayEvents } from "./util/gapi";
 import Home from "./components/Home";
@@ -32,37 +35,45 @@ function App() {
         img: userProfile.getImageUrl(),
       };
       dispatch(signIn(newUser));
-      getAndDisplayEvents(dispatch);
+      getAndDisplayEvents(dispatch, newUser.email);
+
+      // console.log('in setUserCallback');
+      // console.log(newUser.img)
+
     } else {
       // dispatch(signOut());
     }
   };
 
-  const authenticatedCallback = () => {};
+  const authenticatedCallback = () => {
+    // Begin the app with every user signed out
+    forceSignOut();
+  };
 
   useEffect(() => {
     console.log("Loading client");
     handleClientLoad(setUserCallback, authenticatedCallback);
   }, []);
 
-  const handleSignClick = () => {
-    // If we sign out remove events
-    if (handleAuthClick()) {
-      signOutOfApp();
-    } else {
-    }
-  };
-
-  function signOutOfApp() {
-    dispatch(signOut());
+  // To clear out all users
+  // This function is currently not used
+  function clearAppContent() {
+    dispatch(signOutAll());
+    forceSignOut();
     dispatch(clearAllEvents());
     dispatch(clearCalendars());
+  }
+
+  function handleAvatarClick(email) {
+    dispatch(signOut(email));
+    dispatch(clearSpecificCalendar(email));
+    dispatch(clearSpecificEvents(email));
   }
 
   return (
     <div className="App">
       <Router>
-        <Header handleSignClick={handleSignClick} />
+        <Header handlePlusClick={forceSignIn} handleAvatarClick={handleAvatarClick} />
         <Switch>
           <Route path="/privacy">
             <Privacy />

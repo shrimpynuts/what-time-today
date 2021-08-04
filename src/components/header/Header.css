@@ -4,7 +4,8 @@
 
 .titlediv {
   display: flex;
-  flex-direction: row;
+  float: right;
+  /*flex-direction: row;*/
   justify-content: space-between;
   padding: 12px 24px;
 }
@@ -15,8 +16,14 @@
   justify-content: space-between;
 }
 
+.logodiv {
+  float: left;
+  padding: 12px 24px;
+}
+
 .avatar {
   margin-left: 12px;
+  cursor: pointer;
 }
 
 .tooltip {
