@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Privacy from "./components/privacy/Privacy";
 import About from "./components/about/About";
@@ -18,11 +18,13 @@ import {
 } from "./redux/actions";
 import { getAndDisplayEvents } from "./util/gapi";
 import Home from "./components/Home";
+import { getUsers } from "./redux/selectors";
 
 import "./style/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+
   const dispatch = useDispatch();
 
   const setUserCallback = (user) => {
@@ -34,35 +36,22 @@ function App() {
         email: userProfile.getEmail(),
         img: userProfile.getImageUrl(),
       };
+
       dispatch(signIn(newUser));
       getAndDisplayEvents(dispatch, newUser.email);
 
-      // console.log('in setUserCallback');
-      // console.log(newUser.img)
-
-    } else {
-      // dispatch(signOut());
     }
   };
 
   const authenticatedCallback = () => {
     // Begin the app with every user signed out
-    forceSignOut();
+    
   };
 
   useEffect(() => {
     console.log("Loading client");
     handleClientLoad(setUserCallback, authenticatedCallback);
   }, []);
-
-  // To clear out all users
-  // This function is currently not used
-  function clearAppContent() {
-    dispatch(signOutAll());
-    forceSignOut();
-    dispatch(clearAllEvents());
-    dispatch(clearCalendars());
-  }
 
   function handleAvatarClick(email) {
     dispatch(signOut(email));

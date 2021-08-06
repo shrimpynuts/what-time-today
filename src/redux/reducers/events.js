@@ -8,7 +8,20 @@ export default function (state = initialState, action) {
       const { event } = action.payload;
       return {
         ...state,
-        events: [...state.events, event],
+        events: [...state.events.filter(
+          existingEvent =>
+          !(
+            existingEvent.title == event.title &&
+            existingEvent.start == event.start &&
+            existingEvent.end == event.end &&
+            existingEvent.hexColor == event.hexColor &&
+            existingEvent.summary == event.summary &&
+            existingEvent.visible == event.visible &&
+            existingEvent.calendarId == event.calendarId &&
+            existingEvent.email == event.email
+          )
+        ), event],
+
       };
     }
 

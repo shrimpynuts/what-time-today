@@ -7,6 +7,8 @@ export function getAndDisplayEvents(dispatch, newUserEmail) {
     console.log("Tried to get calendars when not signed in!");
     return;
   }
+  
+  let counter;
 
   var startDate = moment().startOf("week");
 
@@ -16,14 +18,16 @@ export function getAndDisplayEvents(dispatch, newUserEmail) {
       var calendars = resp.items;
 
       if (!resp.error) {
+        if (calendars.length == 0) {
+          forceSignOut();
+        }
+        counter = calendars.length;
         for (var i = 0; i < calendars.length; i++) {
           const calendar = calendars[i];
           calendar.visible = calendar.selected;
           calendar.color = calendar.backgroundColor;
           calendar.email = newUserEmail;
           dispatch(addCalendar(calendar));
-          // console.log('calendar with id ', calendar.id);
-          // console.log(calendar);
 
           window.gapi.client.calendar.events
             .list({
@@ -51,18 +55,17 @@ export function getAndDisplayEvents(dispatch, newUserEmail) {
                   email: newUserEmail,
                 };
                 dispatch(addEvent(calendarEvent));
-                // console.log('added event');
+              }
+              counter -= 1;
+              if (counter == 0) {
+                forceSignOut();
               }
             });
         }
-        // console.log('end for all calendars');
-
       } else {
         console.log("Error retrieving calendars");
         console.log(resp.error);
       }
     });
   });
-
-  // console.log('done with getAndDisplayEvents');
 }

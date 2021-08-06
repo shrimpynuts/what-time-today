@@ -8,7 +8,8 @@ export default function (state = initialState, action) {
       const { calendar } = action.payload;
       return {
         ...state,
-        calendars: [...state.calendars, calendar],
+        calendars: [...state.calendars.filter(existingCalendar => existingCalendar.id != calendar.id), calendar],
+
       };
     }
 
