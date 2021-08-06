@@ -8,10 +8,10 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.4.1",
+    "css-loader": "^6.2.0",
     "dotenv": "^8.2.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.28",
-    "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-big-calendar": "^0.24.3",
     "react-bootstrap": "^1.0.1",
@@ -19,7 +19,9 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "sass": "^1.37.5",
+    "sass-loader": "10.2.0"
   },
   "scripts": {
     "start": "serve -s build",
