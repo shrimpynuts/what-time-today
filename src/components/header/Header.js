@@ -1,11 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { OverlayTrigger, Tooltip, Button, Image } from "react-bootstrap";
+import { OverlayTrigger, Tooltip, Button, Image, Badge } from "react-bootstrap";
 
 import GoogleButton from "../../assets/google.png";
 import "./Header.css";
 
-export default function Header({ handleLoginClick, handleAvatarClick }) {
+export default function Header({ handleLoginClick, handleAvatarClick, localSession }) {
   const users = useSelector((state) => state.users);
 
   return (
@@ -19,21 +19,54 @@ export default function Header({ handleLoginClick, handleAvatarClick }) {
       <div className="titlediv">
         {
           users.map((user, idx) =>
-            <Image
-              className="avatar"
-              src={user.img}
-              roundedCircle
-              width={40}
-              height={40}
-              onClick={() => handleAvatarClick(user.email)}
-            />
+            (
+              <OverlayTrigger
+                  placement={"bottom"}
+                  overlay={
+                    <Tooltip className="overlay" style={{ zIndex: 3 }}>
+                      {
+                        (user.localSession != localSession) ? "🧠 Cached from last time\r\n" : ""
+                      }
+                      {"👌 Click to delete calendar\r\n"}
+                      {"🕰 Imported on "}{user.importDate}
+                    </Tooltip>
+                  }
+                >
+                <div class="avatar-div" style={{position: 'relative'}}>
+                  <div class="notify-badge">-</div>
+                  <Image
+                    className=
+                    {
+                      (user.localSession == localSession) ? "avatar" : "avatar grayscale"
+                    }
+                    src={user.img}
+                    rounded
+                    width={40}
+                    height={40}
+                    onClick={() => handleAvatarClick(user.email)}
+                  />
+                </div>
+              </OverlayTrigger>
+            )
           )
         }
 
-        <div className="avatar" onClick={handleLoginClick}>
-          <img src={GoogleButton} alt="" />
-        </div>
-        
+        <OverlayTrigger
+            placement={"bottom"}
+            overlay={
+              <Tooltip className="overlay" style={{ zIndex: 3 }}>
+                {"Import your Google Calendar events"}
+              </Tooltip>
+            }
+          >
+          <Image
+            style={{ cursor: "pointer", 'margin-left': 12 }}
+            onClick={handleLoginClick}
+            src={GoogleButton}
+          />
+        </OverlayTrigger>
+
+
       </div>
     </div>
   );
