@@ -22,7 +22,6 @@ export default function (state = initialState, action) {
           )
         ), event],
       };
-      console.log('add event state:', newState);
       return newState;
     }
 
@@ -48,7 +47,6 @@ export default function (state = initialState, action) {
     }
 
     case RESTORE_EVENTS: {
-      console.log('inside restore events', action.payload);
       return {
         ...state,
         events: action.payload.localEvents,

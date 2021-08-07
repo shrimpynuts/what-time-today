@@ -27,7 +27,12 @@ function App() {
 
   const dispatch = useDispatch();
 
+  const localSession = (new Date()).toLocaleString();
+
   const setUserCallback = (user) => {
+
+    const currentTime = new Date();
+
     if (user) {
       let userProfile = user.getBasicProfile();
       let newUser = {
@@ -35,6 +40,8 @@ function App() {
         lastName: userProfile.getFamilyName(),
         email: userProfile.getEmail(),
         img: userProfile.getImageUrl(),
+        importDate: currentTime.toLocaleString(),
+        localSession: localSession,
       };
 
       dispatch(addUser(newUser));
@@ -80,7 +87,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header handleLoginClick={authSignIn} handleAvatarClick={removeUserCompletely} />
+        <Header handleLoginClick={authSignIn} handleAvatarClick={removeUserCompletely} localSession={localSession} />
         <Switch>
           <Route path="/privacy">
             <Privacy />

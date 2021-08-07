@@ -22,8 +22,14 @@
 }
 
 .avatar {
+  margin-top: 3px;
   margin-left: 12px;
   cursor: pointer;
+}
+
+.grayscale {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
 }
 
 .tooltip {
@@ -60,3 +66,36 @@ button {
     padding: 4px 12px;
   }
 }
+
+.notify-badge {
+    position: absolute;
+    background: gainsboro;
+    height: 1rem;
+    top: -0.2rem;
+    left: 0.3rem;
+    width: 1rem;
+    text-align: center;
+    line-height: 0.8rem;;
+    font-size: 1rem;
+    border-radius: 50%;
+    color: black;
+    border:1px solid black;
+    opacity: 0.0;
+}
+
+/*.avatar-div:hover .notify-badge {
+  opacity: 1.0;
+  z-index: 3;
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+*/
+/*.avatar-div:hover .avatar {
+  opacity: 1.0;
+  z-index: 3;
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}*/
+
+
+
