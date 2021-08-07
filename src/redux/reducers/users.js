@@ -1,17 +1,29 @@
-import { SIGNIN, SIGNOUT, SIGNOUTALL } from "../actionTypes";
+import { SIGNIN, SIGNOUT, SIGNOUTALL, STORE_USERS, RESTORE_USERS } from "../actionTypes";
 
 const initialState = [];
 
 const users = (state = initialState, action) => {
   switch (action.type) {
     case SIGNIN: {
-      return [...state.filter(user => user.email != action.payload.user.email), action.payload.user];
+      const nextState = [...state.filter(user => user.email != action.payload.user.email), action.payload.user];
+      localStorage.setItem('users', JSON.stringify(nextState));
+      return nextState;
     }
     case SIGNOUT: {
-      return state.filter(user => user.email != action.payload.email);
+      const nextState = state.filter(user => user.email != action.payload.email);
+      localStorage.setItem('users', JSON.stringify(nextState));
+      return nextState;
     }
     case SIGNOUTALL: {
-      return []
+      localStorage.setItem('users', JSON.stringify([]));
+      return [];
+    }
+    case STORE_USERS: {
+      localStorage.setItem('users', JSON.stringify(state));
+      return state;
+    }
+    case RESTORE_USERS: {
+      return action.payload.localUsers;
     }
     default: {
       return state;

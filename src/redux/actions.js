@@ -5,13 +5,19 @@ import {
   SIGNIN,
   SIGNOUT,
   SIGNOUTALL,
+  STORE_USERS,
+  RESTORE_USERS,
   ADD_CALENDAR,
   TOGGLE_CALENDAR,
   CLEAR_CALENDARS,
   CLEAR_SPECIFIC_CALENDAR,
+  STORE_CALENDARS,
+  RESTORE_CALENDARS,
   ADD_EVENT,
   CLEAR_ALL_EVENTS,
   CLEAR_SPECIFIC_EVENTS,
+  STORE_EVENTS,
+  RESTORE_EVENTS,
   ADD_AVAILABILITY,
   REMOVE_AVAILABILITY,
   CLEAR_AVAILABILITIES,
@@ -50,6 +56,17 @@ export const signOutAll = () => ({
   type: SIGNOUTALL,
 });
 
+export const storeUsers = () => ({
+  type: STORE_USERS,
+});
+
+export const restoreUsers = (localUsers) => ({
+  type: RESTORE_USERS,
+  payload: {
+    localUsers: localUsers,
+  }
+});
+
 export const addCalendar = (calendar) => ({
   type: ADD_CALENDAR,
   payload: {
@@ -75,6 +92,17 @@ export const clearSpecificCalendar = (email) => ({
   }
 });
 
+export const storeCalendars = () => ({
+  type: STORE_CALENDARS,
+});
+
+export const restoreCalendars = (localCalendars) => ({
+  type: RESTORE_CALENDARS,
+  payload: {
+    localCalendars: localCalendars,
+  }
+});
+
 export const addEvent = (event) => ({
   type: ADD_EVENT,
   payload: {
@@ -90,6 +118,17 @@ export const clearSpecificEvents = (email) => ({
   type: CLEAR_SPECIFIC_EVENTS,
   payload: {
     email: email,
+  }
+});
+
+export const storeEvents = () => ({
+  type: STORE_EVENTS,
+});
+
+export const restoreEvents = (localEvents) => ({
+  type: RESTORE_EVENTS,
+  payload: {
+    localEvents: localEvents,
   }
 });
 

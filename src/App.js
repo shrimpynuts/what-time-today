@@ -11,10 +11,13 @@ import {
   signIn,
   signOut,
   signOutAll,
+  restoreUsers,
   clearAllEvents,
   clearSpecificEvents,
   clearCalendars,
   clearSpecificCalendar,
+  restoreCalendars,
+  restoreEvents,
 } from "./redux/actions";
 import { getAndDisplayEvents } from "./util/gapi";
 import Home from "./components/Home";
@@ -44,13 +47,32 @@ function App() {
   };
 
   const authenticatedCallback = () => {
-    // Begin the app with every user signed out
     
   };
 
   useEffect(() => {
     console.log("Loading client");
     handleClientLoad(setUserCallback, authenticatedCallback);
+
+    const localUsers = JSON.parse(localStorage.getItem('users'));
+    if (localUsers != null) {
+      dispatch(restoreUsers(localUsers));
+    }
+
+    const localCalendars = JSON.parse(localStorage.getItem('calendars'));
+    if (localCalendars != null) {
+      dispatch(restoreCalendars(localCalendars));
+    }
+
+    const localEvents = JSON.parse(localStorage.getItem('events'));
+    if (localEvents != null) {
+        for (var i=0; i<localEvents.length; i++) {
+          localEvents[i].start = new Date(localEvents[i].start);
+          localEvents[i].end = new Date(localEvents[i].end);
+        }
+      dispatch(restoreEvents(localEvents));
+    }
+    
   }, []);
 
   function handleAvatarClick(email) {

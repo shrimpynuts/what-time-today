@@ -1,6 +1,6 @@
 import { userIsAuthorized, forceSignOut } from "./auth";
 import moment from "moment";
-import { addCalendar, addEvent } from "../redux/actions";
+import { addCalendar, addEvent, storeUsers, storeCalendars, storeEvents } from "../redux/actions";
 
 export function getAndDisplayEvents(dispatch, newUserEmail) {
   if (!userIsAuthorized()) {
@@ -59,6 +59,10 @@ export function getAndDisplayEvents(dispatch, newUserEmail) {
               counter -= 1;
               if (counter == 0) {
                 forceSignOut();
+                console.log('dispatch storeCalendars');
+                dispatch(storeCalendars());
+                console.log('dispatch storeEvents');
+                dispatch(storeEvents());
               }
             });
         }
