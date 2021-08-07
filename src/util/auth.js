@@ -53,7 +53,7 @@ function updateSigninStatus(status, setUser) {
   setSigninStatus(status, setUser);
 }
 
-export function forceSignOut() {
+export function authSignOut() {
   if (GoogleAuth.isSignedIn.get()) {
     // User is authorized and has clicked "Sign out" button.
     console.log("Signing out!");
@@ -62,8 +62,8 @@ export function forceSignOut() {
   return true;
 }
 
-export function forceSignIn() {
-  forceSignOut();
+export function authSignIn() {
+  authSignOut();
   console.log("Signing in!");
   GoogleAuth.signIn();
   return false;

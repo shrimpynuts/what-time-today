@@ -1,4 +1,4 @@
-import { ADD_CALENDAR, TOGGLE_CALENDAR, CLEAR_CALENDARS, CLEAR_SPECIFIC_CALENDAR, STORE_CALENDARS, RESTORE_CALENDARS } from "../actionTypes";
+import { ADD_CALENDAR, TOGGLE_CALENDAR, CLEAR_CALENDARS, CLEAR_USER_CALENDARS, STORE_CALENDARS, RESTORE_CALENDARS } from "../actionTypes";
 
 const initialState = { calendars: [] };
 
@@ -33,7 +33,7 @@ export default function (state = initialState, action) {
       };
     }
 
-    case CLEAR_SPECIFIC_CALENDAR: {
+    case CLEAR_USER_CALENDARS: {
       const nextState = {
         ...state,
         calendars: state.calendars.filter(calendar => calendar.email != action.payload.email)

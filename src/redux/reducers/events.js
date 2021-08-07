@@ -1,4 +1,4 @@
-import { ADD_EVENT, CLEAR_ALL_EVENTS, CLEAR_SPECIFIC_EVENTS, STORE_EVENTS, RESTORE_EVENTS } from "../actionTypes";
+import { ADD_EVENT, CLEAR_ALL_EVENTS, CLEAR_USER_EVENTS, STORE_EVENTS, RESTORE_EVENTS } from "../actionTypes";
 
 const initialState = { events: [] };
 
@@ -33,7 +33,7 @@ export default function (state = initialState, action) {
       };
     }
 
-    case CLEAR_SPECIFIC_EVENTS: {
+    case CLEAR_USER_EVENTS: {
       const nextState = {
         ...state,
         events: state.events.filter(event => event.email != action.payload.email)

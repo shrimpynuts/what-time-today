@@ -6,16 +6,13 @@ import Privacy from "./components/privacy/Privacy";
 import About from "./components/about/About";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
-import { handleClientLoad, forceSignIn, forceSignOut } from "./util/auth";
+import { handleClientLoad, authSignIn } from "./util/auth";
 import {
-  signIn,
-  signOut,
-  signOutAll,
+  addUser,
+  removeUser,
   restoreUsers,
-  clearAllEvents,
-  clearSpecificEvents,
-  clearCalendars,
-  clearSpecificCalendar,
+  clearUserCalendars,
+  clearUserEvents,
   restoreCalendars,
   restoreEvents,
 } from "./redux/actions";
@@ -40,9 +37,8 @@ function App() {
         img: userProfile.getImageUrl(),
       };
 
-      dispatch(signIn(newUser));
+      dispatch(addUser(newUser));
       getAndDisplayEvents(dispatch, newUser.email);
-
     }
   };
 
@@ -75,16 +71,16 @@ function App() {
     
   }, []);
 
-  function handleAvatarClick(email) {
-    dispatch(signOut(email));
-    dispatch(clearSpecificCalendar(email));
-    dispatch(clearSpecificEvents(email));
+  function removeUserCompletely(email) {
+    dispatch(removeUser(email));
+    dispatch(clearUserCalendars(email));
+    dispatch(clearUserEvents(email));
   }
 
   return (
     <div className="App">
       <Router>
-        <Header handlePlusClick={forceSignIn} handleAvatarClick={handleAvatarClick} />
+        <Header handleLoginClick={authSignIn} handleAvatarClick={removeUserCompletely} />
         <Switch>
           <Route path="/privacy">
             <Privacy />
