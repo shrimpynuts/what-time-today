@@ -3,10 +3,9 @@ import { useSelector } from "react-redux";
 import { OverlayTrigger, Tooltip, Button, Image } from "react-bootstrap";
 
 import GoogleButton from "../../assets/google.png";
-import LoginButton from "../../assets/login.png";
 import "./Header.css";
 
-export default function Header({ handlePlusClick, handleAvatarClick }) {
+export default function Header({ handleLoginClick, handleAvatarClick }) {
   const users = useSelector((state) => state.users);
 
   return (
@@ -31,14 +30,9 @@ export default function Header({ handlePlusClick, handleAvatarClick }) {
           )
         }
 
-        <Image
-          className="avatar"
-          src={LoginButton}
-          roundedCircle
-          width={40}
-          height={40}
-          onClick={handlePlusClick}
-        />
+        <div className="avatar" onClick={handleLoginClick}>
+          <img src={GoogleButton} alt="" />
+        </div>
         
       </div>
     </div>

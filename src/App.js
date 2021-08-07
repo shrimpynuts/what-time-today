@@ -6,15 +6,15 @@ import Privacy from "./components/privacy/Privacy";
 import About from "./components/about/About";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
-import { handleClientLoad, forceSignIn, forceSignOut } from "./util/auth";
+import { handleClientLoad, authSignIn } from "./util/auth";
 import {
-  signIn,
-  signOut,
-  signOutAll,
-  clearAllEvents,
-  clearSpecificEvents,
-  clearCalendars,
-  clearSpecificCalendar,
+  addUser,
+  removeUser,
+  restoreUsers,
+  clearUserCalendars,
+  clearUserEvents,
+  restoreCalendars,
+  restoreEvents,
 } from "./redux/actions";
 import { getAndDisplayEvents } from "./util/gapi";
 import Home from "./components/Home";
@@ -37,32 +37,50 @@ function App() {
         img: userProfile.getImageUrl(),
       };
 
-      dispatch(signIn(newUser));
+      dispatch(addUser(newUser));
       getAndDisplayEvents(dispatch, newUser.email);
-
     }
   };
 
   const authenticatedCallback = () => {
-    // Begin the app with every user signed out
     
   };
 
   useEffect(() => {
     console.log("Loading client");
     handleClientLoad(setUserCallback, authenticatedCallback);
+
+    const localUsers = JSON.parse(localStorage.getItem('users'));
+    if (localUsers != null) {
+      dispatch(restoreUsers(localUsers));
+    }
+
+    const localCalendars = JSON.parse(localStorage.getItem('calendars'));
+    if (localCalendars != null) {
+      dispatch(restoreCalendars(localCalendars));
+    }
+
+    const localEvents = JSON.parse(localStorage.getItem('events'));
+    if (localEvents != null) {
+        for (var i=0; i<localEvents.length; i++) {
+          localEvents[i].start = new Date(localEvents[i].start);
+          localEvents[i].end = new Date(localEvents[i].end);
+        }
+      dispatch(restoreEvents(localEvents));
+    }
+    
   }, []);
 
-  function handleAvatarClick(email) {
-    dispatch(signOut(email));
-    dispatch(clearSpecificCalendar(email));
-    dispatch(clearSpecificEvents(email));
+  function removeUserCompletely(email) {
+    dispatch(removeUser(email));
+    dispatch(clearUserCalendars(email));
+    dispatch(clearUserEvents(email));
   }
 
   return (
     <div className="App">
       <Router>
-        <Header handlePlusClick={forceSignIn} handleAvatarClick={handleAvatarClick} />
+        <Header handleLoginClick={authSignIn} handleAvatarClick={removeUserCompletely} />
         <Switch>
           <Route path="/privacy">
             <Privacy />
