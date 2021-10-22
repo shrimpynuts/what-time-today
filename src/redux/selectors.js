@@ -8,7 +8,7 @@ export const getTodoList = (store) =>
 export const getTodoById = (store, id) =>
   getTodosState(store) ? { ...getTodosState(store).byIds[id], id } : {};
 
-export const getUser = (store) => store.user;
+export const getUsers = (store) => store.users;
 
 export const getEvents = (store) => store.events;
 

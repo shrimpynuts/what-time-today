@@ -1,12 +1,14 @@
-import { userIsAuthorized } from "./auth";
+import { userIsAuthorized, authSignOut } from "./auth";
 import moment from "moment";
-import { addCalendar, addEvent } from "../redux/actions";
+import { addCalendar, addEvent, storeUsers, storeCalendars, storeEvents } from "../redux/actions";
 
-export function getAndDisplayEvents(dispatch) {
+export function getAndDisplayEvents(dispatch, newUserEmail) {
   if (!userIsAuthorized()) {
     console.log("Tried to get calendars when not signed in!");
     return;
   }
+  
+  let counter;
 
   var startDate = moment().startOf("week");
 
@@ -16,10 +18,15 @@ export function getAndDisplayEvents(dispatch) {
       var calendars = resp.items;
 
       if (!resp.error) {
+        if (calendars.length == 0) {
+          authSignOut();
+        }
+        counter = calendars.length;
         for (var i = 0; i < calendars.length; i++) {
           const calendar = calendars[i];
           calendar.visible = calendar.selected;
           calendar.color = calendar.backgroundColor;
+          calendar.email = newUserEmail;
           dispatch(addCalendar(calendar));
 
           window.gapi.client.calendar.events
@@ -45,11 +52,18 @@ export function getAndDisplayEvents(dispatch) {
                   summary: response.result.summary,
                   visible: true,
                   calendarId: calendar.id,
+                  email: newUserEmail,
                 };
                 dispatch(addEvent(calendarEvent));
               }
+              counter -= 1;
+              if (counter == 0) {
+                authSignOut();
+                dispatch(storeCalendars());
+                dispatch(storeEvents());
+              }
             });
-        } // end for all calendars
+        }
       } else {
         console.log("Error retrieving calendars");
         console.log(resp.error);

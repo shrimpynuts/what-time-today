@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import visibilityFilter from "./visibilityFilter";
 import todos from "./todos";
-import user from "./user";
+import users from "./users";
 import calendars from "./calendars";
 import events from "./events";
 import availabilities from "./availabilities";
@@ -12,5 +12,5 @@ export default combineReducers({
   calendars,
   todos,
   visibilityFilter,
-  user,
+  users,
 });

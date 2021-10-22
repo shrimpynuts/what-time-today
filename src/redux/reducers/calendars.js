@@ -1,4 +1,4 @@
-import { ADD_CALENDAR, TOGGLE_CALENDAR, CLEAR_CALENDARS } from "../actionTypes";
+import { ADD_CALENDAR, TOGGLE_CALENDAR, CLEAR_CALENDARS, CLEAR_USER_CALENDARS, STORE_CALENDARS, RESTORE_CALENDARS } from "../actionTypes";
 
 const initialState = { calendars: [] };
 
@@ -8,7 +8,7 @@ export default function (state = initialState, action) {
       const { calendar } = action.payload;
       return {
         ...state,
-        calendars: [...state.calendars, calendar],
+        calendars: [...state.calendars.filter(existingCalendar => existingCalendar.id != calendar.id), calendar],
       };
     }
 
@@ -31,6 +31,27 @@ export default function (state = initialState, action) {
       return {
         calendars: [],
       };
+    }
+
+    case CLEAR_USER_CALENDARS: {
+      const nextState = {
+        ...state,
+        calendars: state.calendars.filter(calendar => calendar.email != action.payload.email)
+      }
+      localStorage.setItem('calendars', JSON.stringify(nextState.calendars));
+      return nextState;
+    }
+
+    case STORE_CALENDARS: {
+      localStorage.setItem('calendars', JSON.stringify(state.calendars));
+      return state;
+    }
+
+    case RESTORE_CALENDARS: {
+      return {
+        ...state,
+        calendars: action.payload.localCalendars,
+      }
     }
 
     default:

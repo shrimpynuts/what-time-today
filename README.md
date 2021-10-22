@@ -16,6 +16,8 @@ Nothing! Not actively under development currently.
 - [x] Add "Tweet" button
 - [x] Google verification
 - [x] Title/header that makes more sense
+- [x] Prevent duplicate calendars
+- [x] Add Persistent Multi-User Login
 - [ ] Clean up crappy codebase
 - [ ] Onboarding flow
 <!-- - [ ] Add different availability types: Free, OOO, Busy, Busy (but could reschedule for right reason) -->

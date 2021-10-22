@@ -53,20 +53,22 @@ function updateSigninStatus(status, setUser) {
   setSigninStatus(status, setUser);
 }
 
-// Returns true if as a result you are signed out
-export function handleAuthClick() {
+export function authSignOut() {
   if (GoogleAuth.isSignedIn.get()) {
     // User is authorized and has clicked "Sign out" button.
-    // console.log("Signing out!");
+    console.log("Signing out!");
     GoogleAuth.signOut();
-    return true;
-  } else {
-    // User is not signed in. Start Google auth flow.
-    // console.log("Signing in!");
-    GoogleAuth.signIn();
-    return false;
   }
+  return true;
 }
+
+export function authSignIn() {
+  authSignOut();
+  console.log("Signing in!");
+  GoogleAuth.signIn();
+  return false;
+}
+
 
 export function userIsAuthorized() {
   if (GoogleAuth === undefined) {

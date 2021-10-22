@@ -2,15 +2,22 @@ export const ADD_TODO = "ADD_TODO";
 export const TOGGLE_TODO = "TOGGLE_TODO";
 export const SET_FILTER = "SET_FILTER";
 
-export const SIGNIN = "SIGNIN";
-export const SIGNOUT = "SIGNOUT";
+export const ADD_USER = "ADD_USER";
+export const REMOVE_USER = "REMOVE_USER";
+export const RESTORE_USERS = "RESTORE_USERS";
 
 export const ADD_CALENDAR = "ADD_CALENDAR";
 export const TOGGLE_CALENDAR = "TOGGLE_CALENDAR";
 export const CLEAR_CALENDARS = "CLEAR_CALENDARS";
+export const CLEAR_USER_CALENDARS = "CLEAR_USER_CALENDARS";
+export const STORE_CALENDARS = "STORE_CALENDARS";
+export const RESTORE_CALENDARS = "RESTORE_CALENDARS";
 
 export const ADD_EVENT = "ADD_EVENT";
 export const CLEAR_ALL_EVENTS = "CLEAR_ALL_EVENTS";
+export const CLEAR_USER_EVENTS = "CLEAR_USER_EVENTS";
+export const STORE_EVENTS = "STORE_EVENTS";
+export const RESTORE_EVENTS = "RESTORE_EVENTS";
 
 export const ADD_AVAILABILITY = "ADD_AVAILABILITY";
 export const REMOVE_AVAILABILITY = "REMOVE_AVAILABILITY";
